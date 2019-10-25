@@ -1,23 +1,35 @@
 \documentclass[12pt]{article}
 \usepackage[utf8x]{inputenc}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage[bookmarks=true]{hyperref}
 
 \begin{document}
-\begin{titlepage}
-\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
-\center
-\includegraphics{PolimiLogo.png}\\[1cm]
-
-\textsc{\LARGE Requirements Analysis and Specifications Document}\\[1cm]
-\textsc{\large Software Engineering II Project - A.Y. 2019-2020}\\[1cm]
-\HRule \\[0.4cm]
-{ \huge \bfseries SafeStreets}\\[0.15cm]
-\HRule \\[1.5cm]
-{\large Authors  \hfill ID Numbers}\\[0.4cm]
-{\large Andrea \textsc{Furlan}  \hfill XXXXXX}\\[0.2cm]
-{\large Cosimo \textsc{Russo}  \hfill XXXXXX}\\[0.2cm]
-{\large Giorgio \textsc{Ughini} \hfill XXXXXX}\\[2cm]
-{\large \today  \hfill Version 1.0}
-\vfill
-\end{titlepage}
+	\begin{titlepage}
+		\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
+		\center
+		\includegraphics{PolimiLogo.png}\\[1cm]
+		
+		\textsc{\LARGE Requirements Analysis and Specifications Document}\\[1cm]
+		\textsc{\large Software Engineering II Project - A.Y. 2019-2020}\\[1cm]
+		\HRule \\[0.4cm]
+		{ \huge \bfseries SafeStreets}\\[0.15cm]
+		\HRule \\[1.5cm]
+		{\large Authors  \hfill ID Numbers}\\[0.4cm]
+		{\large Andrea \textsc{Furlan}  \hfill XXXXXX}\\[0.2cm]
+		{\large Cosimo \textsc{Russo}  \hfill XXXXXX}\\[0.2cm]
+		{\large Giorgio \textsc{Ughini} \hfill XXXXXX}\\[2cm]
+		{\large \today  \hfill Version 1.0}
+		\vfill
+	\end{titlepage}
+	\clearpage
+	{\hypersetup{hidelinks}\tableofcontents}
+	\clearpage
+	
+	\section{Introduction}
+	
+	\subsection{Purpose}
+	\input{subsections/purpose}
+	
+	
+	\newpage
 \end{document}
