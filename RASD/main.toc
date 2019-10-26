@@ -11,3 +11,11 @@
 \contentsline {subsection}{\numberline {1.6}Actors}{4}{subsection.1.6}% 
 \contentsline {subsection}{\numberline {1.7}References}{4}{subsection.1.7}% 
 \contentsline {subsection}{\numberline {1.8}Document Structure}{4}{subsection.1.8}% 
+\contentsline {section}{\numberline {2}Overall description}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Product perspective}{5}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Product functionalities}{6}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}User characteristics}{6}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{6}{subsection.2.4}% 
+\contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{6}{subsubsection.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{6}{subsubsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{6}{subsubsection.2.4.3}% 
