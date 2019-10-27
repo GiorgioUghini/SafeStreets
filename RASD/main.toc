@@ -17,6 +17,5 @@
 \contentsline {subsection}{\numberline {2.3}User characteristics}{8}{subsection.2.3}% 
 \contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{8}{subsection.2.4}% 
 \contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{8}{subsubsection.2.4.1}% 
-\contentsline {subsubsection}{\numberline {2.4.2}Domain Assumptions}{8}{subsubsection.2.4.2}% 
-\contentsline {subsubsection}{\numberline {2.4.3}General Assumptions}{8}{subsubsection.2.4.3}% 
-\contentsline {subsubsection}{\numberline {2.4.4}Constraints}{8}{subsubsection.2.4.4}% 
+\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{8}{subsubsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{8}{subsubsection.2.4.3}% 
