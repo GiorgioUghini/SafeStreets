@@ -17,8 +17,9 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Notification of Violations}{8}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Data Mining}{8}{subsubsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.3}Request for interventions}{9}{subsubsection.2.2.3}
-\contentsline {subsection}{\numberline {2.3}User characteristics}{9}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Automatic Tickets}{9}{subsubsection.2.2.4}
+\contentsline {subsection}{\numberline {2.3}User characteristics}{10}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{10}{subsection.2.4}
 \contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{10}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{10}{subsubsection.2.4.2}
-\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{10}{subsubsection.2.4.3}
+\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{11}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{11}{subsubsection.2.4.3}

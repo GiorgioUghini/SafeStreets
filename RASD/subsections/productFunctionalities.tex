@@ -1,5 +1,6 @@
 This section provides an abstract of the main functions of the application. To be able to use any of the given functionalities, the user must first register and then login to the application by providing a valid email and a password.
 \subsubsection{Notification of Violations}
+\label{sec:notification_of_violations}
 The base function of the application is the possibility to send a picture of a traffic violation.
 
 The user must send one or more picture(s) of the car in which both the violation and the license plate are clearly visible.
@@ -17,6 +18,7 @@ The users will then send the following information to the system:
 The information sent by the user will be stored on persistent storage on the server and the police will be able to see it on their clients.
 
 \subsubsection{Data Mining}
+\label{sec:data_mining}
 The system will allow the users to extract statistics about violations in the various areas/streets of the cities in the system,
 for example a user can find the areas in which most segnalations occurred in the last 3 months.
 
@@ -39,3 +41,21 @@ An artificial intelligence can then help to calibrate when the system should lau
 The officers responsible for handling these recommendations will see on their clients all the data about the signal,
 including the number of incidents and signals, and can decide to discard it or approve it, thus keeping it in the system for future reference.
 All the approved signals will be reachable by the officers, once they have been resolved they can be deleted from the list but will remain in an archive available for the AI.
+
+
+\subsubsection{Automatic Tickets}
+The user will be able to give tickets when he spots a violation. This works by adding to the functionality
+\hyperref[sec:notification_of_violations]{"Notification of Violations"}
+the possibility to confirm that he is sure that he is signalling an actual violation and wants to give a ticket.
+In this case the system reads the licence plate and uses the police system to automatically issue a ticket.
+
+Security is a key aspect of this functionality. The system must be sure that the signal was sent by the user and that it has not been modified.
+To achieve this, the user must insert a passcode every time he wants to issue a ticket to confirm that he is the actual owner of the account.
+Also, all messages are encrypted with TLS and an hash of every picture is included in the message to make sure that it has not been modified.
+
+The system will also be able to build statistics using the ticket system.
+These data will represent the amount of tickets given in a certain street/area in a given period, the most egregious offenders, and the change in the number of tickets in a certain place during time.
+Just like in the
+\hyperref[sec:data_mining]{Data Mining}
+section, users will not be able to obtain information on single people, they will only see aggregated data and percentages instead of total numbers.
+The officers will instead have the possibility to see the actual numbers and to get information about specific license plates.
