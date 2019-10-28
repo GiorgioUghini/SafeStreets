@@ -1,0 +1,16 @@
+This section provides an abstract of the main functions of the application. To be able to use any of the given functionalities, the user must first register and then login to the application by providing a valid email and a password.
+\subsubsection{Notification of Violations}
+The base function of the application is the possibility to send a picture of a traffic violation.
+
+The user must send one or more picture(s) of the car in which both the violation and the license plate are clearly visible.
+
+The application will try to automatically get the user position using its GPS system, and will notify the user in case of failure so that it can enter it manually.
+
+The users will then send the following information to the system:
+\begin{itemize}
+    \item The pictures selected by the user
+    \item The coordinates
+    \item The current date and time
+    \item An optional comment inserted by the user
+\end{itemize}
+The information sent by the user will be stored on persistent storage on the server and the police will be immediately able to see it on their clients.
