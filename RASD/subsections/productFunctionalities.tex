@@ -11,11 +11,15 @@ The users will then send the following information to the system:
     \item The pictures selected by the user
     \item The position of the user
     \item The current date and time
+    \item The type of violation (to be picked from a pre-defined list)
     \item An optional comment inserted by the user
 \end{itemize}
 The information sent by the user will be stored on persistent storage on the server and the police will be able to see it on their clients.
 
 \subsubsection{Data Mining}
+The system will allow the users to extract statistics about violations in the various areas/streets of the cities in the system,
+for example a user can find the areas in which most segnalations occurred in the last 3 months.
+
 Data mining must take into account the privacy of the users.
 To guarantee an acceptable level of privacy, different roles are given to the users and the officers.
 
@@ -23,3 +27,15 @@ In particular, a user will only be able to see statistics provided by aggregated
 
 Officers, instead, will have the finest granularity: they will see all the information enriched by the actual number of violations and can drill down to the specific licence plates which committed the violations.
 They will also have more filters available with respect to the users, for example the possibility to see which cars committed most violations in a given period.
+
+\subsubsection{Request for interventions}
+The system will get information from the local police systems about incidents, including the location, the licence plates of the cars involved, and the infractions committed.
+
+By crossing the data about the incidents with the segnalations from its users, it will be able to find unsafe areas and also to suppose a reason for it and make suggestions.
+For example, if a road has many cyclists hit and many signals of cars parked on the bike lane, it can suggest to add a barrier between the parking lane and the road.
+The correlations between the infractions found on the police system and the ones on the SafeStreet system, along with the possible solutions, must be done by hand by some human parties.
+An artificial intelligence can then help to calibrate when the system should launch a warning, training on the approval/rejection of the previous signals.
+
+The officers responsible for handling these recommendations will see on their clients all the data about the signal,
+including the number of incidents and signals, and can decide to discard it or approve it, thus keeping it in the system for future reference.
+All the approved signals will be reachable by the officers, once they have been resolved they can be deleted from the list but will remain in an archive available for the AI.
