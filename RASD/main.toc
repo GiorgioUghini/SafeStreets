@@ -15,7 +15,8 @@
 \contentsline {subsection}{\numberline {2.1}Product perspective}{7}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Product functionalities}{8}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Notification of Violations}{8}{subsubsection.2.2.1}
-\contentsline {subsection}{\numberline {2.3}User characteristics}{8}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.2.2}Data Mining}{8}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}User characteristics}{9}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{9}{subsection.2.4}
 \contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{9}{subsubsection.2.4.1}
 \contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{9}{subsubsection.2.4.2}

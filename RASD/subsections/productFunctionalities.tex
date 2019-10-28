@@ -9,8 +9,17 @@ The application will try to automatically get the user position using its GPS sy
 The users will then send the following information to the system:
 \begin{itemize}
     \item The pictures selected by the user
-    \item The coordinates
+    \item The position of the user
     \item The current date and time
     \item An optional comment inserted by the user
 \end{itemize}
-The information sent by the user will be stored on persistent storage on the server and the police will be immediately able to see it on their clients.
+The information sent by the user will be stored on persistent storage on the server and the police will be able to see it on their clients.
+
+\subsubsection{Data Mining}
+Data mining must take into account the privacy of the users.
+To guarantee an acceptable level of privacy, different roles are given to the users and the officers.
+
+In particular, a user will only be able to see statistics provided by aggregated data, never he will see the absoulte numbers but only percentages. 
+
+Officers, instead, will have the finest granularity: they will see all the information enriched by the actual number of violations and can drill down to the specific licence plates which committed the violations.
+They will also have more filters available with respect to the users, for example the possibility to see which cars committed most violations in a given period.
