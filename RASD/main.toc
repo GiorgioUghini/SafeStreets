@@ -1,25 +1,31 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Purpose}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Scope}{3}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}The world-machine phenomena}{3}{subsubsection.1.2.1}
-\contentsline {subsection}{\numberline {1.3}Goals}{4}{subsection.1.3}
-\contentsline {subsubsection}{\numberline {1.3.1}Traceability Matrix}{4}{subsubsection.1.3.1}
-\contentsline {subsection}{\numberline {1.4}Definition and Acronyms}{5}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Definitions}{5}{subsubsection.1.4.1}
-\contentsline {subsubsection}{\numberline {1.4.2}Acronyms}{5}{subsubsection.1.4.2}
-\contentsline {subsection}{\numberline {1.5}Revision}{5}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Actors}{5}{subsection.1.6}
-\contentsline {subsection}{\numberline {1.7}References}{5}{subsection.1.7}
-\contentsline {subsection}{\numberline {1.8}Document Structure}{5}{subsection.1.8}
-\contentsline {section}{\numberline {2}Overall description}{7}{section.2}
-\contentsline {subsection}{\numberline {2.1}Product perspective}{7}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Product functionalities}{8}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Notification of Violations}{8}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Data Mining}{8}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Request for interventions}{9}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}Automatic Tickets}{9}{subsubsection.2.2.4}
-\contentsline {subsection}{\numberline {2.3}User characteristics}{10}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{10}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{10}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{11}{subsubsection.2.4.2}
-\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{11}{subsubsection.2.4.3}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Purpose}{2}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Scope}{3}{subsection.1.2}% 
+\contentsline {subsubsection}{\numberline {1.2.1}The world-machine phenomena}{3}{subsubsection.1.2.1}% 
+\contentsline {subsection}{\numberline {1.3}Goals}{4}{subsection.1.3}% 
+\contentsline {subsubsection}{\numberline {1.3.1}Traceability Matrix}{4}{subsubsection.1.3.1}% 
+\contentsline {subsection}{\numberline {1.4}Definition and Acronyms}{5}{subsection.1.4}% 
+\contentsline {subsubsection}{\numberline {1.4.1}Definitions}{5}{subsubsection.1.4.1}% 
+\contentsline {subsubsection}{\numberline {1.4.2}Acronyms}{5}{subsubsection.1.4.2}% 
+\contentsline {subsection}{\numberline {1.5}Revision}{5}{subsection.1.5}% 
+\contentsline {subsection}{\numberline {1.6}Actors}{5}{subsection.1.6}% 
+\contentsline {subsection}{\numberline {1.7}References}{5}{subsection.1.7}% 
+\contentsline {subsection}{\numberline {1.8}Document Structure}{5}{subsection.1.8}% 
+\contentsline {section}{\numberline {2}Overall description}{7}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Product perspective}{7}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Product functionalities}{8}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Notification of Violations}{8}{subsubsection.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Data Mining}{8}{subsubsection.2.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.3}Request for interventions}{9}{subsubsection.2.2.3}% 
+\contentsline {subsubsection}{\numberline {2.2.4}Automatic Tickets}{9}{subsubsection.2.2.4}% 
+\contentsline {subsection}{\numberline {2.3}User characteristics}{10}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Assumptions and dependencies}{10}{subsection.2.4}% 
+\contentsline {subsubsection}{\numberline {2.4.1}Domain Assumptions}{10}{subsubsection.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.4.2}General Assumptions}{11}{subsubsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Constraints}{11}{subsubsection.2.4.3}% 
+\contentsline {section}{\numberline {3}Specific requirements}{12}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{12}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{12}{subsubsection.3.1.1}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Software Interfaces}{13}{subsubsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.2}Non functional requirements}{13}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Scenarios}{13}{subsection.3.3}% 
