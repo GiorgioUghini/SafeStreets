@@ -1,0 +1,43 @@
+\subsubsection{Performance}
+    The application should be able to deliver the violations (including the
+    \hyperref[sec:automatic_tickets]{automatic tickets}
+    ) in an acceptable time,
+    which means at most 15 seconds with a 4G connection, but should average to about 5 seconds.
+    This is not a strict requirement, but it improves a lot the user experience and the possibility
+    that he does not decide to give up with the upload.
+
+    The 
+    \hyperref[sec:data_mining]{data mining}
+    functionality is not as trivial as the delivery of the violations, but keeping in
+    mind the effectiveness of the user experience it should still be able to deliver results with an
+    average waiting time of 5-10 seconds, with an upper bound of 20 seconds.
+
+    The
+    \hyperref[sec:request_for_interventions]{request for interventions}
+    functionality does not have any time constraints, it should just end. It can be run at any time and
+    its results will be stored on persistent storage, without the need to be used immediately.
+    This functionality does however consume a lot of computer resources, since it must cross a large quantity
+    of data from different sources and it will also use an AI. For this reason, it will have to run
+    either when the load on the system is low or on a completely separate hardware.
+
+    All the other operations that require an internet connection (login, logout...) should be fast enough
+    to not become frustrating for the user to use the application, indicatively they should take 5 seconds at most.
+
+\subsubsection{Reliability}
+    The system has no reasons to be highly available except for providing a great user experience.
+    It will have to guarantee a 99.99\% availability
+
+\subsubsection{Security}
+    Since users will be able to give tickets automatically, security is a key aspect of the application.
+    The information contained in the report of a violation must never be altered, and the login information
+    must be kept safe to prevent hackers from giving false tickets using stolen identities.
+    
+    Users also give their personal data when registering, and their privacy must be guaranteed.
+
+\subsubsection{Scalability}
+    This application will be a pioneer in this field, so it is difficult to foresee how many users will
+    use it and how. A high degree of scalability is therefore required.
+
+\subsubsection{Accuracy}
+    The maximium error that the GPS system should commit for the application to accept a position is 15 meters,
+    to let an eventual officer near the violation find the car.
