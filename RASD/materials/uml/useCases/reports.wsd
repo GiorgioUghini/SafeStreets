@@ -9,3 +9,31 @@
     U -> S: compiled form
     return ok, redirect\nto main page
 @enduml
+
+@startuml information_mining
+    participant User as U
+    participant System as S
+
+    autoactivate on
+
+    U -> S: get statistics page
+    return report statistics page
+    U -> S: chosen statistics\nand area
+    return send requested statistics
+    U -> S: get main page
+    return main page
+@enduml
+
+@startuml information_mining_by_officers
+    participant User as U
+    participant System as S
+
+    autoactivate on
+
+    U -> S: get statistics page
+    return report statistics page
+    U -> S: chosen statistics\nand area
+    return send requested statistics
+    U -> S: get main page
+    return main page
+@enduml
