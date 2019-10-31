@@ -20,7 +20,7 @@ object Statistics
 object SuggestionSystem
 object PoliceSystem
 
-note left of ViolationType : eg. parking on bike lane
+note top of ViolationType : eg. parking on bike lane
 
 Customer <|-- User
 Customer <|-- Authority
