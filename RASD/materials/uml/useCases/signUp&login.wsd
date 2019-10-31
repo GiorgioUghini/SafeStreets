@@ -1,0 +1,59 @@
+@startuml Sign Up
+    autoactivate on
+
+    participant User as U
+    participant System as S
+
+    activate U
+    U -> S: get signup page
+    return send sigup page
+    U -> S: send username\n& password
+    return ok, redirect to\nprofile page
+    deactivate U
+@enduml
+
+@startuml Login
+    autoactivate on
+
+    participant User as U
+    participant System as S
+
+    activate U
+    U -> S: get login page
+    return send login page
+    U -> S: send login\ninformation
+    return ok, redirect to homepage
+    deactivate U
+@enduml
+
+@startuml Password Recovery
+    
+    participant User as U
+    participant System as S
+    participant Mailer as M
+
+    activate U
+    activate S
+    U -> S: get login page
+    return send login page
+    deactivate S
+    U -> S: recover password
+    activate S
+    return password recovery page
+    deactivate S
+    U -> S: send email used to login
+    deactivate U
+    activate S
+    S -> M: send email\nto user
+    deactivate S
+    activate M
+    M ->> U: email with link\nto recover password
+    deactivate M
+    activate U
+    activate S
+    U -> S: set new password
+    S --> U: redirect to login page
+    deactivate U
+    deactivate S
+
+@enduml
