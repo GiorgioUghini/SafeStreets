@@ -1,5 +1,3 @@
-RASD/main.log
-RASD/main.synctex.gz
-RASD/main.fls
-RASD/main.fdb_latexmk
+RASD/main.*
+!RASD/main.tex
 *.log
