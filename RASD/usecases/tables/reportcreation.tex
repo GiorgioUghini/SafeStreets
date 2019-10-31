@@ -1,0 +1,36 @@
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{lp{9cm}}
+\bf\large Name&\bf\large Creation of a new report\\
+\hline
+\hline
+\bf Actors&User\\
+\hline
+\bf Entry conditions&The user is logged in and is in the main page.\\
+\hline
+\bf Flow of events&
+\begin{itemize}
+
+\item The user clicks on "Report Violation" button and is redirected to the page with the input form to create a new report.
+
+\item The user fills up the form with the violation information (type of violation, pictures of it, address, description, license plate position, date and time, etc...). Eventually some fields such as date and time will be auto-completed.
+
+\item The user clicks on the "Send Report" button after a quick check of all the field he typed.
+
+\item The system show the user a confirmation message. 
+
+\item The user is then redirected to the main page.
+
+\end{itemize}
+\\
+\hline
+\bf Exit conditions&The new report with the user-inserted data is created into the SafeStreets system. In the case of the violation to result in a duplicate (possibly by another user) of in case of the license plate to be not readable, the system put this report in a revision queue and block the process.\\
+\hline
+\bf Exceptions&The information inserted is wrong (non-existent address, date and time in the future) or some information is missing: a corresponding error is displayed and the user is asked to modify the inserted information accordingly.
+\\
+\hline
+
+\end{tabular}
+\caption{Report Creation Use Case table}
+ \label{tab:reportcreationtab}
+\end{table}

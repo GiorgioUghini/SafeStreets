@@ -42,3 +42,7 @@
 \contentsline {subsubsection}{\numberline {3.4.2}Sign up}{19}{subsubsection.3.4.2}% 
 \contentsline {subsubsection}{\numberline {3.4.3}Login}{20}{subsubsection.3.4.3}% 
 \contentsline {subsubsection}{\numberline {3.4.4}Password Recovery}{21}{subsubsection.3.4.4}% 
+\contentsline {subsubsection}{\numberline {3.4.5}Report and Information Management use cases}{22}{subsubsection.3.4.5}% 
+\contentsline {subsubsection}{\numberline {3.4.6}Report Creation}{23}{subsubsection.3.4.6}% 
+\contentsline {subsubsection}{\numberline {3.4.7}Information Mining by Users}{24}{subsubsection.3.4.7}% 
+\contentsline {subsubsection}{\numberline {3.4.8}Information Mining by Officers}{25}{subsubsection.3.4.8}% 

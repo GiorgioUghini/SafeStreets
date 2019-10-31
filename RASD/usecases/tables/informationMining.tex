@@ -1,0 +1,34 @@
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{lp{9cm}}
+\bf\large Name&\bf\large Information Mining by users\\
+\hline
+\hline
+\bf Actors&User\\
+\hline
+\bf Entry conditions&The user is logged in and is in the main page.\\
+\hline
+\bf Flow of events&
+\begin{itemize}
+
+\item The user clicks on the "Show statistics" button and is redirected to the page with the general SafeStreets statistics such as number of usages, cities availability, etc.
+
+\item The user clicks on the selection menu to choose which statistics he wants to see, possibly entering more data about which area does he want to focus in (most dangerous areas, vehicles with highest frequency of violations, etc).
+
+\item The user could analyze the data that will be shown and after he finishes, he presses the Home button.
+
+\item The user is then redirected to the main page.
+
+\end{itemize}
+\\
+\hline
+\bf Exit conditions&The user-requested analytics is displayed to the user at the level of aggregation he've chosen (that kind of information is not sensitive).\\
+\hline
+\bf Exceptions&The selected area is actually not present on SafeStreets or nonexistent: an error is displayed and he is asked to modify the inserted location accordingly.
+\\
+\hline
+
+\end{tabular}
+\caption{Data Mining Use Case table}
+ \label{tab:dataminingtab}
+\end{table}
