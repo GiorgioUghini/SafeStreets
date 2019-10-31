@@ -1,0 +1,41 @@
+@startuml Class Diagram
+
+legend
+    E: Enum
+    A: Abstract class
+end legend
+
+skinparam packageStyle rect
+
+abstract Customer
+object User
+object Authority
+abstract Violation
+enum ViolationType
+object TrafficViolation
+object Ticket
+object Position
+object ReducedStatistics
+object Statistics
+object SuggestionSystem
+object PoliceSystem
+
+note left of ViolationType : eg. parking on bike lane
+
+Customer <|-- User
+Customer <|-- Authority
+Customer --> ReducedStatistics : view
+ReducedStatistics --* Violation
+ReducedStatistics <|-- Statistics
+Authority --> Statistics : view
+User "1" --> "0..n" Violation : send
+Authority "0..n" --> "0..n" Violation : view
+Authority --> SuggestionSystem : view
+SuggestionSystem --> Violation : "use"
+PoliceSystem <-- SuggestionSystem : "use"
+Violation <|-- TrafficViolation
+Violation <|-- Ticket
+Violation "1" --* "1" ViolationType
+Violation "1" --* "1" Position
+
+@enduml
