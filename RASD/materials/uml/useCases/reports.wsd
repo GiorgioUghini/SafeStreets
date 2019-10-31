@@ -1,0 +1,11 @@
+@startuml creation_of_new_report
+    participant User as U
+    participant System as S
+
+    autoactivate on
+
+    U -> S: get report violation\npage
+    return report violation page
+    U -> S: compiled form
+    return ok, redirect\nto main page
+@enduml
