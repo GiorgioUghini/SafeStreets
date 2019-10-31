@@ -3,6 +3,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[bookmarks=true]{hyperref}
 \usepackage{float}
+\usepackage{placeins}
 
 \begin{document}
 	\begin{titlepage}
@@ -62,7 +63,7 @@
 	\input{subsections/domainassumptions}
 	
 	\subsubsection{General Assumptions}
-	\input{subsections/generalAssumptions.tex}
+	\input{subsections/generalAssumptions}
 	\subsubsection{Constraints}
 	\input{subsections/constraints}
 	%Put the tracecability matrix also here to follow the development
@@ -72,15 +73,20 @@
 	\subsection{External Interface Requirements}
 	\subsubsection{User Interfaces}
 	%Mockups
-	\clearpage
 	\subsubsection{Software Interfaces}
 	\input{subsections/softwareinterfaces}
 	\subsection{Non functional requirements}
-	\input{subsections/nonFunctionalRequirements.tex}	
-	\subsection{Scenarios}
+	\input{subsections/nonFunctionalRequirements}
 	\subsection{Scenarios}
 	\subsubsection{First scenario}
 	\input{scenarios/scenario1}
+	\FloatBarrier
 	\subsubsection{Second scenario}
 	\input{scenarios/scenario2}
+	\FloatBarrier
+	\clearpage
+	\subsubsection{Third scenario}
+	\input{scenarios/scenario3}
+	\FloatBarrier
+	\clearpage
 \end{document}
