@@ -34,8 +34,8 @@
 \contentsline {subsubsection}{\numberline {3.2.3}Security}{14}{subsubsection.3.2.3}% 
 \contentsline {subsubsection}{\numberline {3.2.4}Scalability}{14}{subsubsection.3.2.4}% 
 \contentsline {subsubsection}{\numberline {3.2.5}Accuracy}{15}{subsubsection.3.2.5}% 
-\contentsline {subsection}{\numberline {3.3}Scenarios}{15}{subsection.3.3}% 
-\contentsline {subsubsection}{\numberline {3.3.1}First scenario}{15}{subsubsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3}Scenarios}{16}{subsection.3.3}% 
+\contentsline {subsubsection}{\numberline {3.3.1}First scenario}{16}{subsubsection.3.3.1}% 
 \contentsline {subsubsection}{\numberline {3.3.2}Second scenario}{17}{subsubsection.3.3.2}% 
 \contentsline {subsubsection}{\numberline {3.3.3}Third scenario}{18}{subsubsection.3.3.3}% 
 \contentsline {subsection}{\numberline {3.4}Use Cases}{19}{subsection.3.4}% 
