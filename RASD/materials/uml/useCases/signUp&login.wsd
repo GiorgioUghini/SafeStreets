@@ -3,11 +3,16 @@
 
     participant User as U
     participant System as S
+    participant Storage as ST
 
     activate U
     U -> S: get signup page
     return send sigup page
-    U -> S: send username\n& password
+    U -> S: send email, password\n & profile pic
+    S -> S: check data\nis valid
+    deactivate S
+    S -> ST: store data
+    return ok
     return ok, redirect to\nprofile page
     deactivate U
 @enduml
@@ -17,43 +22,42 @@
 
     participant User as U
     participant System as S
+    participant Storage as ST
 
     activate U
     U -> S: get login page
-    return send login page
+    return login page
     U -> S: send login\ninformation
-    return ok, redirect to homepage
+    S -> ST: check login info
+    return user data
+    return ok, redirect\nto homepage
     deactivate U
 @enduml
 
 @startuml Password Recovery
-    
+    autoactivate on
+
     participant User as U
     participant System as S
+    participant Storage as ST
     participant Mailer as M
 
     activate U
-    activate S
     U -> S: get login page
-    return send login page
-    deactivate S
+    return login page
     U -> S: recover password
-    activate S
     return password recovery page
-    deactivate S
     U -> S: send email used to login
     deactivate U
-    activate S
+    S -> ST: check user exists
+    return user data
     S -> M: send email\nto user
     deactivate S
-    activate M
     M ->> U: email with link\nto recover password
     deactivate M
     activate U
-    activate S
     U -> S: set new password
-    S --> U: redirect to login page
+    return redirect to login page
     deactivate U
-    deactivate S
 
 @enduml
