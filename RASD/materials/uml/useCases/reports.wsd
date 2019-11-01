@@ -1,25 +1,39 @@
 @startuml creation_of_new_report
     participant User as U
     participant System as S
+    participant Storage as ST
 
     autoactivate on
 
-    U -> S: get report violation\npage
-    return report violation page
-    U -> S: compiled form
+    U -> S: get_report_violation\n_page()
+    return
+    U -> S: send_report(report)
+    S -> ST: check_user_credentials()
+    return user data
+    S -> S: report_is_valid(report)
+    deactivate S
+    S -> ST: store_report(report)
+    return ok
     return ok, redirect\nto main page
 @enduml
 
 @startuml information_mining
     participant User as U
     participant System as S
+    participant Storage as ST
 
     autoactivate on
 
-    U -> S: get statistics page
-    return report statistics page
-    U -> S: chosen statistics\nand area
-    return send requested statistics
+    U -> S: get_statistics_page()
+    S -> ST: check_user_type()
+    return user
+    return filters for simple user
+    U -> S: send_filters(filters)
+    S -> ST: query(filters)
+    return search results
+    S -> S: process_results()
+    deactivate S
+    return statistics
     U -> S: get main page
     return main page
 @enduml
@@ -27,13 +41,20 @@
 @startuml information_mining_by_officers
     participant User as U
     participant System as S
+    participant Storage as ST
 
     autoactivate on
 
-    U -> S: get statistics page
-    return report statistics page
-    U -> S: chosen statistics\nand area
-    return send requested statistics
+    U -> S: get_statistics_page()
+    S -> ST: check_user_type()
+    return authority
+    return filters for authority
+    U -> S: send_filters(filters)
+    S -> ST: query(filters)
+    return search results
+    S -> S: process_results()
+    deactivate S
+    return statistics
     U -> S: get main page
     return main page
 @enduml
