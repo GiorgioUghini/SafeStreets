@@ -6,12 +6,12 @@
     participant Storage as ST
 
     activate U
-    U -> S: get signup page
-    return send sigup page
-    U -> S: send email, password\n & profile pic
-    S -> S: check data\nis valid
+    U -> S: get_signup_page()
+    return
+    U -> S: send_user_data(data)
+    S -> S: check_validity(data)
     deactivate S
-    S -> ST: store data
+    S -> ST: store_data(data)
     return ok
     return ok, redirect to\nprofile page
     deactivate U
@@ -25,10 +25,10 @@
     participant Storage as ST
 
     activate U
-    U -> S: get login page
+    U -> S: get_login_page()
     return login page
-    U -> S: send login\ninformation
-    S -> ST: check login info
+    U -> S: send_login\n_information(data)
+    S -> ST: check_login_info(data)
     return user data
     return ok, redirect\nto homepage
     deactivate U
@@ -43,21 +43,23 @@
     participant Mailer as M
 
     activate U
-    U -> S: get login page
+    U -> S: get_login_page()
     return login page
-    U -> S: recover password
+    U -> S: get_passw_recovery_page()
     return password recovery page
-    U -> S: send email used to login
+    U -> S: recover_passw(email)
     deactivate U
-    S -> ST: check user exists
+    S -> ST: check_user_exists(email)
     return user data
-    S -> M: send email\nto user
+    S -> M: send_recovery_email(email)
     deactivate S
-    M ->> U: email with link\nto recover password
+    M ->> U: email with link to recover password
     deactivate M
     activate U
-    U -> S: set new password
-    return redirect to login page
+    U -> S: set_new_passwd(password)
+    S -> ST: update_password\n(email, password)
+    return ok
+    return ok, redirect to login page
     deactivate U
 
 @enduml
