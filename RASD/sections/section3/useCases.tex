@@ -1,3 +1,13 @@
+\newcommand{\usecasefigure}[2]{
+	\begin{figure}[htp]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/useCases/#1.png}
+		\caption{Use case diagram #2}
+		\label{fig:use_cases_#1}
+	\end{figure}
+	\newpage
+}
+
 This section contains all the use cases initially described with the use cases UML model, then the most important Use Case have their own table which provide further details such as: involved actors, entry conditions, flow of events,  exit conditions and exceptional conditions.
 
 \subsubsection{User Page use cases}
@@ -11,32 +21,15 @@ This section contains all the use cases initially described with the use cases U
 \subsubsection{Sign up}
 \input{usecases/tables/signup}
 \newpage
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/sign_up.png}
-	\caption{Use case diagram of the registration process}
-	\label{fig:userpage}
-\end{figure}
-\newpage
+\usecasefigure{sign_up}{of the signup process}
 \subsubsection{Login}
 \input{usecases/tables/login}
 \newpage
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/login.png}
-	\caption{Use case diagram of the login process}
-	\label{fig:userpage}
-\end{figure}
-\newpage
+\usecasefigure{login}{of the login process}
 \subsubsection{Password Recovery}
 \input{usecases/tables/recoverpassword}
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/password_recovery.png}
-	\caption{Use case diagram of the password recovery process}
-	\label{fig:userpage}
-\end{figure}
-\newpage
+\usecasefigure{password_recovery}{of the password recovery process}
+
 \subsubsection{Report and Information Management use cases}
 \begin{figure}[htp] 
 	%\includegraphics[...]{...}  include UML diagram for basic functionality
@@ -48,32 +41,13 @@ This section contains all the use cases initially described with the use cases U
 \subsubsection{Report Creation}
 \input{usecases/tables/reportcreation}
 \newpage
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/creation_of_new_report.png}
-	\caption{Use case diagram of the report creation process}
-	\label{fig:reportmanagement}
-\end{figure}
-\newpage
+\usecasefigure{creation_of_new_report}{of the report creation process}
 \subsubsection{Information Mining by Users}
 \input{usecases/tables/informationMining}
 \newpage
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/information_mining.png}
-	\caption{Use case diagram of the information mining process for a user}
-	\label{fig:reportmanagement}
-\end{figure}
-\newpage
+\usecasefigure{information_mining}{of the information mining process for a user}
 \subsubsection{Information Mining by Officers}
 \input{usecases/tables/informationMiningOfficer}
 \newpage
-\begin{figure}[htp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/useCases/information_mining_by_officers.png}
-	\caption{Use case diagram of the information mining process for an officer}
-	\label{fig:reportmanagement}
-\end{figure}
-\newpage
-
+\usecasefigure{information_mining_by_officers}{of the information mining process for an officer}
 
