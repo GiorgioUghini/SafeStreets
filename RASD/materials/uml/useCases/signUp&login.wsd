@@ -6,12 +6,12 @@
     participant Storage as ST
 
     activate U
-    U -> S: get_signup_page()
+    U -> S: 1.get_signup_page()
     return
-    U -> S: send_user_data(data)
-    S -> S: check_validity(data)
+    U -> S: 2.send_user_data(data)
+    S -> S: 2.1.check_validity(data)
     deactivate S
-    S -> ST: store_data(data)
+    S -> ST: 2.2store_data(data)
     return ok
     return ok, redirect to\nprofile page
     deactivate U
@@ -25,10 +25,10 @@
     participant Storage as ST
 
     activate U
-    U -> S: get_login_page()
+    U -> S: 1.get_login_page()
     return login page
-    U -> S: send_login\n_information(data)
-    S -> ST: check_login_info(data)
+    U -> S: 2.send_login\n_information(data)
+    S -> ST: 2.1.check_login_info(data)
     return user data
     return ok, redirect\nto homepage
     deactivate U
@@ -43,21 +43,21 @@
     participant Mailer as M
 
     activate U
-    U -> S: get_login_page()
+    U -> S: 1.get_login_page()
     return login page
-    U -> S: get_passw_recovery_page()
+    U -> S: 2.get_passw_recovery_page()
     return password recovery page
-    U -> S: recover_passw(email)
+    U -> S: 3.recover_passw(email)
     deactivate U
-    S -> ST: check_user_exists(email)
+    S -> ST: 3.1.check_user_exists(email)
     return user data
-    S -> M: send_recovery_email(email)
+    S -> M: 3.2.send_recovery_email(email)
     deactivate S
     M ->> U: email with link to recover password
     deactivate M
     activate U
-    U -> S: set_new_passwd(password)
-    S -> ST: update_password\n(email, password)
+    U -> S: 4.set_new_passwd(password)
+    S -> ST: 4.1.update_password\n(email, password)
     return ok
     return ok, redirect to login page
     deactivate U
