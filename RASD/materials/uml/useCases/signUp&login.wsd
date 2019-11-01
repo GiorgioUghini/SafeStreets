@@ -1,4 +1,4 @@
-@startuml Sign Up
+@startuml sign_up
     autoactivate on
 
     participant User as U
@@ -17,7 +17,7 @@
     deactivate U
 @enduml
 
-@startuml Login
+@startuml login
     autoactivate on
 
     participant User as U
@@ -34,7 +34,7 @@
     deactivate U
 @enduml
 
-@startuml Password Recovery
+@startuml password_recovery
     autoactivate on
 
     participant User as U
