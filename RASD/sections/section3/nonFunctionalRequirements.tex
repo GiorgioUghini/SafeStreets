@@ -8,7 +8,7 @@
 
     The 
     \hyperref[sec:data_mining]{data mining}
-    functionality is not as trivial as the delivery of the violations, but keeping in
+    functionality is not as trivial as the delivery of the violations, but keeping in 
     mind the effectiveness of the user experience it should still be able to deliver results with an
     average waiting time of 5-10 seconds, with an upper bound of 20 seconds.
 
@@ -22,23 +22,34 @@
 
     All the other operations that require an internet connection (login, logout...) should be fast enough
     to not become frustrating for the user to use the application, indicatively they should take 5 seconds at most.
-
+    
 \subsubsection{Reliability}
     The system has no reasons to be highly available except for providing a great user experience.
-    It will have to guarantee a 99.99\% availability
+    So, since this is not a critical application, short period of down could be acceptable.
+    
+\subsubsection{Availability}
+	Like said before SafeStreet does not need to be up to ensure critical aspects, but since some violations could
+	have only a short period of time to be checked, it will have to guarantee a 99.99\% availability.
 
 \subsubsection{Security}
     Since users will be able to give tickets automatically, security is a key aspect of the application.
     The information contained in the report of a violation must never be altered, and the login information
-    must be kept safe to prevent hackers from giving false tickets using stolen identities.
-    
-    Users also give their personal data when registering, and their privacy must be guaranteed.
+    must be kept safe to prevent hackers from giving false tickets using stolen identities.\\
+  	Users also give their personal data when registering, and their privacy must be guaranteed.
 
 \subsubsection{Scalability}
     This application will be a pioneer in this field, so it is difficult to foresee how many users will
     use it and how. A high degree of scalability is therefore required. To handle the first city, Milan,
     the system must handle 1 million registered users and a peak of 10.000 concurrent requests.
-
+    
+\subsubsection{Maintainability}
+	Since the application requires a high degree of scalability, a code easy to fix, modify or update is preferable,
+	because actions on it will probably take place.    
+	
+\subsubsection{Portability}
+	The application has to be compatible with the majority of devices present on the market in the last years, in order to
+	increase the people eligible to become users of SafeStreets.
+	
 \subsubsection{Accuracy}
-    The maximium error that the GPS system should commit for the application to accept a position is 15 meters,
+    The maximum error that the GPS system should commit for the application to accept a position is 15 meters,
     to let an eventual officer near the violation find the car.
