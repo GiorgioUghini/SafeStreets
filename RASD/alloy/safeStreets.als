@@ -1,6 +1,8 @@
-// Domain
-sig Email, Password {}
-sig Customer{
+// Domain assumptions
+sig Email {} {one u: User | this = u.email}
+sig Password {} {one u: User | this = u.password}
+
+abstract sig Customer{
     email: one Email,
     password: one Password
 }
@@ -12,6 +14,9 @@ sig Violation {
     licensePlace: one LicensePlace,
     violationType: one ViolationType,
     position: one Position
+} {
+    //a violation must belong to a user
+    one u: User | this in u.reports
 }
 
 sig User extends Customer {
@@ -21,7 +26,7 @@ sig Officer extends Customer{}
 
 //2 users cannot have same email
 fact {
-    no c1, c2: Customer | c1.email = c2.email
+    no disj c1, c2: Customer | c1.email = c2.email
 }
 
 //a report cannot belong to 2 users
@@ -30,4 +35,4 @@ fact {
 }
 
 pred show{}
-run show for 3
+run show for 5 but exactly 2 User
