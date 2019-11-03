@@ -2,13 +2,15 @@
     left to right direction
     skinparam packageStyle rectangle
 
+    actor Guest as G
     actor User as U
     rectangle "user pages" {
-        U -- (Sign Up)
+        G -- (Sign Up)
         U -- (Login)
         U -- (Recover password)
         U -- (Change password)
         U -- (Edit profile picture)
+        U -- (View my reports)
     }
 @enduml
 
