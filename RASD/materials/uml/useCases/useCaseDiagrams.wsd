@@ -1,4 +1,4 @@
-@startuml user_page
+@startuml uc_user_page
     left to right direction
     skinparam packageStyle rectangle
 
@@ -6,11 +6,13 @@
     rectangle "user pages" {
         U -- (Sign Up)
         U -- (Login)
-        U -- (Password Recovery)
+        U -- (Recover password)
+        U -- (Change password)
+        U -- (Edit profile picture)
     }
 @enduml
 
-@startuml report_and_information_mining
+@startuml uc_report_and_information_mining
     left to right direction
     skinparam packageStyle rectangle
 
@@ -27,7 +29,7 @@
         U -- CR
         U -- MIU
         O -- MIO
-        CR <. GT : extends
+        CR <. GT : <<extend>>
         MIU --|> MI
         MIO --|> MI
     }
