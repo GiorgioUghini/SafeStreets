@@ -1,26 +1,30 @@
-// Domain assumptions
+/******DOMAIN ASSUMPTIONS******/
 sig Email {} {one u: User | this = u.email}
-sig Password {} {one u: User | this = u.password}
+sig Password {} {some u: User | this = u.password}
 
 abstract sig Customer{
     email: one Email,
     password: one Password
 }
-// all tickets, licensePlace and position must belong to a violation
+//all licensePlates must belong to a picture
+sig LicensePlate {} { some p: Picture | this = p.licensePlate }
+// all tickets, pictures and positions must belong to a violation
 sig Ticket {} { one v: Violation | this = v.ticket }
-sig LicensePlate {} { one v: Violation | this = v.licensePlate }
-sig Position {} { one v: Violation | this = v.position }
+sig Position {} { some v: Violation | this = v.position }
+sig Picture {
+    licensePlate: lone LicensePlate
+} { one v: Violation | this in v.pictures }
 
 //a violation type can belong to no violation
 sig ViolationType{}
 
 sig Violation {
-    licensePlate: one LicensePlate,
     violationType: one ViolationType,
     position: one Position,
-    ticket: lone Ticket
+    ticket: lone Ticket,
+    pictures: set Picture
 } {
-    //a violation must belong to a user
+    //a violation must belong to only one user
     one u: User | this in u.reports
 }
 
@@ -34,13 +38,27 @@ fact {
     no disj c1, c2: Customer | c1.email = c2.email
 }
 
-//a report cannot belong to 2 users
+//a violation must have exactly one license plate
 fact {
-    no disj u1, u2: User | one v: Violation | v in u1.reports and v in u2.reports
+    //at least one
+    all v: Violation | some p:Picture | p in v.pictures and #(p.licensePlate)=1
+    //at most one
+    all v: Violation | no disj p1, p2: Picture |
+        (p1 in v.pictures) and (p2 in v.pictures) and (p1.licensePlate != p2.licensePlate)
 }
+
+/******************ASSERTIONS******************/
+
+//a report cannot belong to 2 users
+check {
+    no disj u1, u2: User | some v: Violation | v in u1.reports and v in u2.reports
+} for 5
 
 pred show{
     #User = 2
+    all u: User | #u.reports > 0
     #Violation > 0
+    all v: Violation | #(v.pictures) > 1
+    all p: Picture | #p.licensePlate = 1
 }
 run show for 5
