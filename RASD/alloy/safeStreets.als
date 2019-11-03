@@ -6,14 +6,19 @@ abstract sig Customer{
     email: one Email,
     password: one Password
 }
-sig LicensePlace {}
-sig Position {}
+// all tickets, licensePlace and position must belong to a violation
+sig Ticket {} { one v: Violation | this = v.ticket }
+sig LicensePlate {} { one v: Violation | this = v.licensePlate }
+sig Position {} { one v: Violation | this = v.position }
+
+//a violation type can belong to no violation
 sig ViolationType{}
 
 sig Violation {
-    licensePlace: one LicensePlace,
+    licensePlate: one LicensePlate,
     violationType: one ViolationType,
-    position: one Position
+    position: one Position,
+    ticket: lone Ticket
 } {
     //a violation must belong to a user
     one u: User | this in u.reports
@@ -34,5 +39,8 @@ fact {
     no disj u1, u2: User | one v: Violation | v in u1.reports and v in u2.reports
 }
 
-pred show{}
-run show for 5 but exactly 2 User
+pred show{
+    #User = 2
+    #Violation > 0
+}
+run show for 5
