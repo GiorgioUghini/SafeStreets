@@ -1,0 +1,34 @@
+@startuml user_page
+    left to right direction
+    skinparam packageStyle rectangle
+
+    actor User as U
+    rectangle "user pages" {
+        U -- (Sign Up)
+        U -- (Login)
+        U -- (Password Recovery)
+    }
+@enduml
+
+@startuml report_and_information_mining
+    left to right direction
+    skinparam packageStyle rectangle
+
+    actor User as U
+    actor Officer as O
+
+    rectangle "Reports and information mining" {
+        (Create report) as CR
+        (Give ticket) as GT
+        (Mine information) as MI
+        (Mine information for User) as MIU
+        (Mine information for Officer) as MIO
+
+        U -- CR
+        U -- MIU
+        O -- MIO
+        CR <. GT : extends
+        MIU --|> MI
+        MIO --|> MI
+    }
+@enduml
