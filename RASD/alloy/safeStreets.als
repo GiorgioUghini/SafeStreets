@@ -6,6 +6,12 @@ abstract sig Customer{
     email: one Email,
     password: one Password
 }
+
+sig User extends Customer {
+    reports: set Violation
+}
+sig Officer extends Customer{}
+
 //all licensePlates must belong to a picture
 sig LicensePlate {} { some p: Picture | this = p.licensePlate }
 // all tickets, pictures and positions must belong to a violation
@@ -28,10 +34,14 @@ sig Violation {
     one u: User | this in u.reports
 }
 
-sig User extends Customer {
-    reports: set Violation
+sig Accident {
+    position: one Position,
+    accidentType: one AccidentType
 }
-sig Officer extends Customer{}
+sig AccidentType {} { 
+    //an accidentType must belong to an accident
+    some a: Accident | this in a.accidentType
+}
 
 //2 users cannot have same email
 fact {
