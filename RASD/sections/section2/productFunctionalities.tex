@@ -22,14 +22,13 @@ The information sent by the user will be stored on persistent storage on the ser
 The system will allow both users and officers to extract statistics about violations in the various areas/streets of the cities in the system,
 for example a user can find the areas in which most reports occurred in the last 3 months.
 
-Data mining must take into account the privacy of the users.
-To guarantee an acceptable level of privacy, different roles are given to the users and the officers.
-
-In particular, a user will only be able to see statistics provided by aggregated data, never he will see the absolute numbers but only percentages. 
-
-Officers will, instead, have the finest granularity: they will see all the information enriched by the actual number of violations and can drill down to the specific licence plates which committed the violations.
-They will also have more filters available with respect to the users, for example the possibility to see which cars committed most violations in a given period.
-
+In particular, a user will be able to get information about:
+\begin{itemize}
+    \item The app usage: how many users are using the app and when
+    \item The effectiveness of the initiative by looking at trends
+    \item The most popular traffic violations in a city by category
+    \item The most active user of the month: the one who reported most violations
+\end{itemize}
 \subsubsection[Request for interventions]{[F3] Request for interventions\hypertarget{sec:f3}{}}
 \label{sec:request_for_interventions}
 The system will get information from the local police systems about incidents, including the location, the licence plates of the cars involved, and the infractions committed.
@@ -57,8 +56,4 @@ To achieve this, all messages are encrypted with TLS and an hash of every pictur
 \subsubsection[Statistics]{[F5] Statistics\hypertarget{sec:f5}{}}
 The system will also be able to build statistics using the violation and ticket systems.
 These data will represent the amount of tickets given in a certain street/area in a given period, the most egregious offenders, and the change in the number of tickets in a certain place during time.
-Just like in the
-\hyperlink{sec:f2}{Data Mining}
-section, users will not be able to obtain information on single people, they will only see aggregated data and percentages instead of total numbers.
-The officers will instead have the possibility to see the actual numbers and to get information about specific license plates.
 \clearpage
