@@ -43,6 +43,12 @@ sig AccidentType {} {
     some a: Accident | this in a.accidentType
 }
 
+sig UnsafeReason{
+    accident: one AccidentType,
+    violation: one ViolationType,
+    position: one Position
+}
+
 fun getLicensePlate[v: Violation] : one LicensePlate {
     let x = {p: Picture | p in v.pictures and #p.licensePlate=1} |
         x.licensePlate
@@ -68,6 +74,13 @@ check {
 check {
     no disj c1, c2: Customer | c1.email = c2.email
 } for 5
+
+//an unsafeReason must belong to a position iff its violation and accident
+//happened at least once in that location
+fact {
+    //all u: UnsafeReason | some p: Position, v: ViolationType, a: AccidentType |
+}
+
 
 pred show{
     #User = 2
