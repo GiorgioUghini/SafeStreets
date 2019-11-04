@@ -1,6 +1,6 @@
 /******DOMAIN ASSUMPTIONS******/
-sig Email {} {one u: User | this = u.email}
-sig Password {} {some u: User | this = u.password}
+sig Email {} {one u: Customer | this = u.email}
+sig Password {} {some u: Customer | this = u.password}
 
 abstract sig Customer{
     email: one Email,
@@ -43,9 +43,9 @@ sig AccidentType {} {
     some a: Accident | this in a.accidentType
 }
 
-//2 users cannot have same email
-fact {
-    no disj c1, c2: Customer | c1.email = c2.email
+fun getLicensePlate[v: Violation] : one LicensePlate {
+    let x = {p: Picture | p in v.pictures and #p.licensePlate=1} |
+        x.licensePlate
 }
 
 //a violation must have exactly one license plate
@@ -62,6 +62,11 @@ fact {
 //a report cannot belong to 2 users
 check {
     no disj u1, u2: User | some v: Violation | v in u1.reports and v in u2.reports
+} for 5
+
+//2 users cannot have same email
+check {
+    no disj c1, c2: Customer | c1.email = c2.email
 } for 5
 
 pred show{
