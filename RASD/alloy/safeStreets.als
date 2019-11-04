@@ -43,10 +43,15 @@ sig AccidentType {} {
     some a: Accident | this in a.accidentType
 }
 
-sig UnsafeReason{
+sig UnsafePosition{
     accident: one AccidentType,
     violation: one ViolationType,
-    position: one Position
+    position: one Position,
+    suggestion: one Suggestion
+}
+sig Suggestion {} {
+    //every suggestion belongs to an unsafe position
+    some up: UnsafePosition | this = up.suggestion
 }
 
 fun getLicensePlate[v: Violation] : one LicensePlate {
@@ -63,6 +68,21 @@ fact {
         (p1 in v.pictures) and (p2 in v.pictures) and (p1.licensePlate != p2.licensePlate)
 }
 
+//an UnsafePosition must belong to a position iff its violation and accident
+//happened at least 3 times in that location
+fact {
+    all u: UnsafePosition | some p: Position, v: ViolationType, a: AccidentType |
+        p = u.position and v = u.violation and a = u.accident and 
+        #getViolationsByPosition[p]>1 and #getAccidentsByPosition[p] > 1
+}
+
+fun getViolationsByPosition[p: Position] : set Violation {
+    {v: Violation | v.position = p}
+}
+fun getAccidentsByPosition[p: Position]: set Accident{
+    {a: Accident | a.position = p}
+}
+
 /******************ASSERTIONS******************/
 
 //a report cannot belong to 2 users
@@ -75,18 +95,12 @@ check {
     no disj c1, c2: Customer | c1.email = c2.email
 } for 5
 
-//an unsafeReason must belong to a position iff its violation and accident
-//happened at least once in that location
-fact {
-    //all u: UnsafeReason | some p: Position, v: ViolationType, a: AccidentType |
-}
-
-
 pred show{
     #User = 2
     all u: User | #u.reports > 0
     #Violation > 0
     all v: Violation | #(v.pictures) > 1
     all p: Picture | #p.licensePlate = 1
+    #UnsafePosition > 0
 }
 run show for 5
