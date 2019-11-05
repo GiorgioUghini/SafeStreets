@@ -20,7 +20,8 @@ sig LocalPolice{
     officers: set Officer,
     violations: set Violation,
     accidents: set Accident,
-    positions: set Position
+    positions: set Position,
+    unsafePositions: set UnsafePosition
 }
 
 //all licensePlates must belong to a picture
@@ -108,7 +109,7 @@ fact {
 
 //a violation belongs to a local police iff its position is one of the local police positions
 fact {
-    all v: Violation | some lp: LocalPolice |
+    all v: Violation | all lp: LocalPolice |
         v.position in lp.positions <=> v in lp.violations
 }
 
@@ -116,6 +117,12 @@ fact {
 fact {
     all v: Violation | no disj o1,o2: Officer |
         v in o1.handledViolations and v in o2.handledViolations
+}
+
+//an unsafePosition must belong to the LocalPolice that has its position
+fact{
+    all up: UnsafePosition | all lp: LocalPolice |
+        (up in lp.unsafePositions) <=> (up.position in lp.positions)
 }
 
 /********************FUNCTIONS*******************/
@@ -147,6 +154,11 @@ check {
 check {
     no disj c1, c2: Customer | c1.email = c2.email
 } for 5
+
+check {
+    no up: UnsafePosition | some disj p1, p2: LocalPolice |
+        up in p1.unsafePositions and up in p2.unsafePositions
+}
 
 pred show{
     #UnsafePosition > 1
