@@ -62,12 +62,7 @@ sig Suggestion {} {
 
 //a violation must have exactly one license plate
 fact {
-    //at least one
-    all v: Violation | some p:Picture | p in v.pictures and #(p.licensePlate)=1
-    //at most one
-    all v: Violation | no disj p1, p2: Picture |
-        //TODO this does not work
-        (p1 in v.pictures) and (p2 in v.pictures) and (p1.licensePlate != p2.licensePlate)
+    all v: Violation | #v.pictures.licensePlate = 1
 }
 
 //an UnsafePosition must belong to a position iff its violation and accident
@@ -128,8 +123,7 @@ pred show{
     all u: User | #u.reports > 0
     #Violation > 0
     all v: Violation | #(v.pictures) > 1
-    all p: Picture | #p.licensePlate = 1
     #LocalPolice > 1
-    some p: Picture | p.licensePlate = none
+    all v: Violation | #{p : Picture | p in v.pictures and p.licensePlate!=none}>1
 }
-run show for 5
+run show for 8
