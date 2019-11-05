@@ -1,4 +1,4 @@
-/******DOMAIN ASSUMPTIONS******/
+/***************DOMAIN ASSUMPTIONS***************/
 sig Email {} {one u: Customer | this = u.email}
 sig Password {} {some u: Customer | this = u.password}
 
@@ -48,6 +48,9 @@ sig Violation {
 sig Accident {
     position: one Position,
     accidentType: one AccidentType
+} {
+    //all accidents must belong to one and only one local police
+    one p: LocalPolice | this in p.accidents
 }
 sig AccidentType {} { 
     //an accidentType must belong to an accident
@@ -99,7 +102,7 @@ fact {
         v in o1.handledViolations and v in o2.handledViolations
 }
 
-/******************FUNCTIONS******************/
+/********************FUNCTIONS*******************/
 fun getViolationsByPosition[p: Position] : set Violation {
     {v: Violation | v.position = p}
 }
@@ -130,9 +133,8 @@ check {
 } for 5
 
 pred show{
-    #Officer.handledViolations > 1
-    #Officer > 1
-    no o: Officer | o.handledViolations = none
-    #Ticket > 0
+    #UnsafePosition > 1
+    #LocalPolice > 1
+    all lp: LocalPolice | #lp.positions > 0
 }
 run show for 5
