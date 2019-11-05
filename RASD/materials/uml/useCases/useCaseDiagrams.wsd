@@ -25,14 +25,32 @@
         (Create report) as CR
         (Give ticket) as GT
         (Mine information) as MI
-        (Mine information for User) as MIU
-        (Mine information for Officer) as MIO
+        (Mine unsafe areas for User) as MIUAU
+        (Mine vehicle violations for User) as MVVU
+        (Mine unsafe areas for Officer) as MIUAO
+        (Mine vehicle violations for Officer) as MVVO
 
         U -- CR
-        U -- MIU
-        O -- MIO
+        U -- MIUAU
+        U -- MVVU
+        O -- MIUAO
+        O -- MVVO
         CR <. GT : <<extend>>
-        MIU --|> MI
-        MIO --|> MI
+        MIUAU --|> MI
+        MVVU --|> MI
+        MIUAO --|> MI
+        MVVO --|> MI
+    }
+@enduml
+
+@startuml uc_statistics
+    left to right direction
+    skinparam packageStyle rectangle
+
+    actor Officer as O
+    actor User as U
+    rectangle "user pages" {
+        U -- (See Statistics)
+        O -- (See Statistics)
     }
 @enduml

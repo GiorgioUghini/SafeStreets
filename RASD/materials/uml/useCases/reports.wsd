@@ -33,7 +33,7 @@
     return search results
     S -> S: 2.2.process_results()
     deactivate S
-    return statistics
+    return unsafe areas
     U -> S: 3.get main page
     return main page
 @enduml
@@ -54,7 +54,73 @@
     return search results
     S -> S: 2.2.process_results()
     deactivate S
-    return statistics
+    return unsafe areas
+    U -> S: 3.get main page
+    return main page
+@enduml
+
+@startuml automatic_traffic_ticket
+    participant User as U
+    participant System as S
+    participant Storage as ST
+    participant Police as P
+
+    autoactivate on
+
+    U -> S: 1.get_report_violation\n_page()
+    return
+    U -> S: 2.send_report(report)
+    S -> ST: 2.1.check_user_credentials()
+    return user data
+    S -> S: 2.2.report_is_valid(report)
+    deactivate S
+    S -> ST: 2.3.store_report_verified(report)
+    return ok
+    S -> P: 2.4.send_report(report)
+    P -> P: 3.1.process\n_ticket(ticket)
+    deactivate P
+    return ok
+    return ok, redirect\nto main page
+@enduml
+
+@startuml information_mining_vehicle
+    participant User as U
+    participant System as S
+    participant Storage as ST
+
+    autoactivate on
+
+    U -> S: 1.get_statistics_page()
+    S -> ST: 1.1check_user_type()
+    return user
+    return filters for simple user
+    U -> S: 2.send_filters(filters)
+    S -> ST: 2.1.query(filters)
+    return search results
+    S -> S: 2.2.process_results()
+    deactivate S
+    return vehicles statistics
+    U -> S: 3.get main page
+    return main page
+@enduml
+
+@startuml mining_vehicle_officers
+    participant User as U
+    participant System as S
+    participant Storage as ST
+
+    autoactivate on
+
+    U -> S: 1.get_statistics_page()
+    S -> ST: 1.1.check_user_type()
+    return authority
+    return filters for authority
+    U -> S: 2.send_filters(filters)
+    S -> ST: 2.1.query(filters)
+    return search results
+    S -> S: 2.2.process_results()
+    deactivate S
+    return vehicle statistics
     U -> S: 3.get main page
     return main page
 @enduml
