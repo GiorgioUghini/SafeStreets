@@ -57,15 +57,19 @@ sig AccidentType {} {
     some a: Accident | this in a.accidentType
 }
 
-sig UnsafePosition{
-    accident: one AccidentType,
-    violation: one ViolationType,
-    position: one Position,
+sig UnsafeReason {
+    accType: one AccidentType,
+    violType: one ViolationType,
     suggestion: one Suggestion
+}
+
+sig UnsafePosition{
+    reasons: set UnsafeReason,
+    position: one Position
 }
 sig Suggestion {} {
     //every suggestion belongs to an unsafe position
-    some up: UnsafePosition | this = up.suggestion
+    some u: UnsafeReason | this = u.suggestion
 }
 
 //a violation must have exactly one license plate
@@ -73,13 +77,25 @@ fact {
     all v: Violation | #v.pictures.licensePlate = 1
 }
 
-//an UnsafePosition must belong to a position iff its violation and accident
-//happened at least 2 times in that location
+/* An UnsafePosition must belong to a position iff its violation and accident
+happened at least 2 times in that location */
 //NB: 2 is a really low number used to make the model work, it is not the actual number
 fact {
-    all u: UnsafePosition | some p: Position, v: ViolationType, a: AccidentType |
-        p = u.position and v = u.violation and a = u.accident and 
-        #getViolationsByPosition[p]>1 and #getAccidentsByPosition[p] > 1
+    all u: UnsafePosition | some p: Position, vt: ViolationType, at: AccidentType, r: UnsafeReason |
+        p = u.position and r in u.reasons and vt = r.violType and at = r.accType and
+        #{v: Violation | v.position = p and vt = v.violationType} > 1 and
+        #{a: Accident | a.position = p and at = a.accidentType} > 1
+}
+
+fact {
+    no disj up1, up2 : UnsafePosition | some ur: UnsafeReason, p: Position |
+        ur in up1.reasons and ur in up2.reasons
+        and p = up1.position and p = up2.position
+}
+
+fact {
+    no disj ur1, ur2: UnsafeReason | ur1.accType = ur2.accType and
+        ur1.violType = ur2.violType
 }
 
 //all positions, accidents, violations and officers must belong to 1 and only 1 localPolice
