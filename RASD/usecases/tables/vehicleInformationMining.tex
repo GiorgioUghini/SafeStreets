@@ -1,0 +1,37 @@
+\begin{table}[!htbp]
+	\hypertarget{tab:dataminingvehicletab}{}
+	\centering
+	\begin{tabular}{lp{9cm}}
+		\bf\large Name&\bf\large Information Mining by Users\\
+		\hline
+		\hline
+		\bf Actors&User\\
+		\hline
+		\bf Entry conditions&The user is logged in and is in the main page.\\
+		\hline
+		\bf Flow of events&
+		\begin{itemize}
+			
+			\item The user clicks on the "Worst Drivers" button and is redirected to the page with the general SafeStreets statistics about vehicle infractions in the city grouped by license plate.
+			
+			\item The user clicks on the calendar menu to choose which time frame he's interested in, possibly entering its more information such as the violation type.
+			
+			\item The user could analyze the data that will be shown in order of number of violations.
+			
+			\item After he finishes, he presses the Home button.
+			
+			\item The user is then redirected to the main page.
+			
+		\end{itemize}
+		\\
+		\hline
+		\bf Exit conditions&The user-requested analytics is displayed to the user at the level of aggregation he has chosen (these kind of information is not sensitive).\\
+		\hline
+		\bf Exceptions&The inserted time frame is invalid: an error is displayed and he is asked to modify the desired time frame.
+		\\
+		\hline
+		
+	\end{tabular}
+	\caption{Data Mining for Vehicle Use Case table}
+	\label{tab:dataminingvehicletab}
+\end{table}

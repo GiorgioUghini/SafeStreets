@@ -1,0 +1,37 @@
+\begin{table}[!htbp]
+	\hypertarget{tab:dataminingvehicleofficerstab}{}
+	\centering
+	\begin{tabular}{lp{9cm}}
+		\bf\large Name&\bf\large Information Mining by officers\\
+		\hline
+		\hline
+		\bf Actors&Officer\\
+		\hline
+		\bf Entry conditions&The officer is logged in and is in the main page of his software.\\
+		\hline
+		\bf Flow of events&
+		\begin{itemize}
+			
+			\item The officer clicks on the "Worst Drivers" button and is redirected to the page with the general SafeStreets statistics about vehicle infractions in the officer municipality grouped by license plate.
+			
+			\item The officer clicks on the calendar menu to choose which time frame he's interested in, possibly entering its more information such as the violation type with the possibility to export it in CSV.
+			
+			\item The officer could analyze the data that will be shown in both textual and graphical form.
+			
+			\item After he finishes, he presses the Home button.
+			
+			\item The officer is then redirected to the main page.
+			
+		\end{itemize}
+		\\
+		\hline
+		\bf Exit conditions&The officer-requested analytics is displayed to the officer for the municipality land.\\
+		\hline
+		\bf Exceptions&The inserted time frame is invalid: an error is displayed and the officer is asked to modify the desired time frame.
+		\\
+		\hline
+		
+	\end{tabular}
+	\caption{Data Mining for Vehicle by Officers Use Case table}
+	\label{tab:dataminingvehicleofficerstab}
+\end{table}

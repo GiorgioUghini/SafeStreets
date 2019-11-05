@@ -1,8 +1,8 @@
 \begin{table}[!htbp]
-	\hypertarget{tab:reportcreationtab}{}
+	\hypertarget{tab:AutomaticTrafficTicket}{}
 	\centering
 	\begin{tabular}{lp{10cm}}
-\bf\large Name&\bf\large Creation of a new report\\
+\bf\large Name&\bf\large Automatic Traffic Ticket generation\\
 \hline
 \hline
 \bf Actors&User\\
@@ -16,7 +16,7 @@
 
 \item The user fills up the form with the violation information (type of violation, pictures of it, address, description, license plate position, date and time, etc...). Eventually some fields such as date and time will be auto-completed.
 
-\item The user does not click on the "Verified Violation" checkbox because he's not sure of it being a violation or not.
+\item The user clicks on the "Verified Violation" checkbox because he is sure of it being a violation because it's evident or any other motivation.
 
 \item The user clicks on the "Send Report" button after a quick check of all the field he typed.
 
@@ -25,7 +25,7 @@
 \end{itemize}
 \\
 \hline
-\bf Exit conditions&The new report with the user-inserted data is created into the SafeStreets system.\\
+\bf Exit conditions&The new report is created into the SafeStreets system and passed to the Local Police service.\\
 \hline
 \bf Exceptions&
 \setlist{nolistsep}
@@ -38,6 +38,6 @@
 \hline
 
 \end{tabular}
-\caption{Report Creation Use Case table}
- \label{tab:reportcreationtab}
+\caption{Automatic Traffic Ticket generation Use Case table}
+ \label{tab:AutomaticTrafficTicket}
 \end{table}
