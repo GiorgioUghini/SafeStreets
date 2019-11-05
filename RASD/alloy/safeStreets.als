@@ -10,7 +10,12 @@ abstract sig Customer{
 sig User extends Customer {
     reports: set Violation
 }
-sig Officer extends Customer{}
+sig Officer extends Customer{
+    handledViolations: set Violation
+} {
+    //officers handle only violations without ticket
+    all v : handledViolations | v.ticket = none
+}
 sig LocalPolice{
     officers: set Officer,
     violations: set Violation,
@@ -88,6 +93,12 @@ fact {
         v.position in lp.positions <=> v in lp.violations
 }
 
+//a violation can be handled by an officer only
+fact {
+    all v: Violation | no disj o1,o2: Officer |
+        v in o1.handledViolations and v in o2.handledViolations
+}
+
 /******************FUNCTIONS******************/
 fun getViolationsByPosition[p: Position] : set Violation {
     {v: Violation | v.position = p}
@@ -119,11 +130,9 @@ check {
 } for 5
 
 pred show{
-    #User = 2
-    all u: User | #u.reports > 0
-    #Violation > 0
-    all v: Violation | #(v.pictures) > 1
-    #LocalPolice > 1
-    all v: Violation | #{p : Picture | p in v.pictures and p.licensePlate!=none}>1
+    #Officer.handledViolations > 1
+    #Officer > 1
+    no o: Officer | o.handledViolations = none
+    #Ticket > 0
 }
-run show for 8
+run show for 5
