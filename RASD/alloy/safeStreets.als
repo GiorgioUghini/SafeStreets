@@ -1,7 +1,14 @@
 /***************DOMAIN ASSUMPTIONS***************/
-sig Email {} {one u: Customer | this = u.email}
-sig Password {} {some u: Customer | this = u.password}
+sig Email {} {
+    //each email belongs to 1 customer only
+    one u: Customer | this = u.email
+}
+sig Password {} {
+    //A password must belong to a customer, but different customers can have the same pwd
+    some u: Customer | this = u.password
+}
 
+//either a user or an officer
 abstract sig Customer{
     email: one Email,
     password: one Password
@@ -16,6 +23,8 @@ sig Officer extends Customer{
     //officers handle only violations without ticket
     all v : handledViolations | v.ticket = none
 }
+
+//The police system of a city
 sig LocalPolice{
     officers: set Officer,
     violations: set Violation,
@@ -25,14 +34,26 @@ sig LocalPolice{
     confirmedTickets: set Violation
 }
 
-//all licensePlates must belong to a picture
-sig LicensePlate {} { some p: Picture | this = p.licensePlate }
-// all tickets, pictures and positions must belong to a violation
-sig Ticket {} { one v: Violation | this = v.ticket }
-sig Position {} { some v: Violation | this = v.position }
+
+sig LicensePlate {} { 
+    //all licensePlates must belong to a picture
+    some p: Picture | this = p.licensePlate 
+}
+
+sig Ticket {} { 
+    // all tickets, pictures and positions must belong to a violation
+    one v: Violation | this = v.ticket 
+}
+sig Position {} { 
+    //all position must belong to a violation
+    some v: Violation | this = v.position
+}
 sig Picture {
     licensePlate: lone LicensePlate
-} { one v: Violation | this in v.pictures }
+} { 
+    //each picture must belong to exactly one violation
+    one v: Violation | this in v.pictures
+}
 
 //a violation type can belong to no violation
 sig ViolationType{}
@@ -47,6 +68,7 @@ sig Violation {
     one u: User | this in u.reports
 }
 
+//An accident registered in the police system
 sig Accident {
     position: one Position,
     accidentType: one AccidentType
@@ -54,11 +76,13 @@ sig Accident {
     //all accidents must belong to one and only one local police
     one p: LocalPolice | this in p.accidents
 }
+
 sig AccidentType {} { 
     //an accidentType must belong to an accident
     some a: Accident | this in a.accidentType
 }
 
+//The core of the suggestions given by the system
 sig UnsafeReason {
     accType: one AccidentType,
     violType: one ViolationType,
@@ -69,21 +93,23 @@ sig UnsafePosition{
     reasons: set UnsafeReason,
     position: one Position
 }
+
 sig Suggestion {} {
     //every suggestion belongs to an unsafe position
     some u: UnsafeReason | this = u.suggestion
 }
 
-//The hashes calculated by the SafeStreet System
-one sig Hashes{
+abstract sig AbstrHashes {
     hashes: Violation -> Hash
 }
+
+//The hashes calculated by the SafeStreet System
+one sig Hashes extends AbstrHashes {}
 
 //The hashes calculated by the police system
-one sig PoliceHashes{
-    hashes: Violation -> Hash
-}
+one sig PoliceHashes extends AbstrHashes {}
 
+//TODO: try using abstrHash instead
 sig Hash{} {
     //A hash must belong to either a system hash or a police hash
     some h1: Hashes, h2: PoliceHashes |
@@ -175,18 +201,6 @@ fact {
 fact {
     no disj v1,v2 : Violation | some h: Hash |
         v1->h in Hashes.hashes and v2->h in Hashes.hashes
-}
-
-/********************FUNCTIONS*******************/
-fun getViolationsByPosition[p: Position] : set Violation {
-    {v: Violation | v.position = p}
-}
-fun getAccidentsByPosition[p: Position]: set Accident{
-    {a: Accident | a.position = p}
-}
-fun getLicensePlate[v: Violation] : one LicensePlate {
-    let x = {p: Picture | p in v.pictures and #p.licensePlate=1} |
-        x.licensePlate
 }
 
 /*******************ASSERTIONS*******************/
