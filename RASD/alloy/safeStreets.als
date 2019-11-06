@@ -156,6 +156,27 @@ fact {
     no v: Violation | v in LocalPolice.confirmedTickets and v.ticket = none
 }
 
+//all violations have their hash on SafeStreet System
+fact {
+    all v: Violation | one h: Hash | v->h in Hashes.hashes
+}
+
+//a violation cannot have more than 1 hash on the police system
+fact {
+    all v: Violation | #v.(PoliceHashes.hashes) <= 1
+}
+
+//Violations without tickets do not have an hash
+fact {
+    all v: Violation | v.ticket = none => v !in PoliceHashes.hashes.Hash
+}
+
+//2 violations cannot have the same hash
+fact {
+    no disj v1,v2 : Violation | some h: Hash |
+        v1->h in Hashes.hashes and v2->h in Hashes.hashes
+}
+
 /********************FUNCTIONS*******************/
 fun getViolationsByPosition[p: Position] : set Violation {
     {v: Violation | v.position = p}
@@ -180,9 +201,16 @@ check {
     all up: UnsafePosition | one lp: LocalPolice | up in lp.unsafePositions
 }
 
+//a violation cannot appear 2 times in the hashes system
+check{
+    all v: Violation | #v.(Hashes.hashes) = 1
+}
+
 /*******************PREDICATES*******************/
 
 pred show{
     #LocalPolice.confirmedTickets > 1
+    some v: Violation | v.ticket!=none and v in PoliceHashes.hashes.Hash and
+        v !in LocalPolice.confirmedTickets
 }
 run show for 5
