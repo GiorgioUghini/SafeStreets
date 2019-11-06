@@ -20,13 +20,15 @@
     either when the load on the system is low or on a completely separate hardware.
 
     All the other operations that require an internet connection (login, logout...) should be fast enough
-    to not become frustrating for the user to use the application, indicatively they should take 5 seconds at most.
+    to not become frustrating to the user to use the application, indicatively they should take 5 seconds at most.
     
 \subsubsection{Reliability}
-	As the system stores very important data, it must be ensured	that it is highly reliable and fault tolerant. For example, the	central	server,	which contains all the information, should be duplicated.\\The running processes (which provide the automatic ticket functionality) should be trustworthy, so if something goes wrong with an automatic ticket, that report that was generating the ticket should be put in a queue waiting that will be manually analyzed. In this way there must be ensured the consistency of information.\\Any other technique can be	adopted	to	ensure	the	required reliability.
+	As the system stores sensible data, it must be ensured	that it is highly reliable and fault tolerant. For example, the	central	server,	which contains all the information, should be duplicated.\\The running processes (which provide the automatic ticket functionality) should be trustworthy, so if something goes wrong with an automatic ticket, that report that was generating the ticket should be put in a queue waiting for a manual analysis. In this way the consistency of information is ensured.\\Any other technique can be	adopted	to	ensure	the	required reliability.
     
 \subsubsection{Availability}
-	The system has no reasons to be highly available except for providing a greatuser experience. So, since this is not a critical application, short period ofdown could be acceptable.\\
+	The system has no reasons to be highly available except for providing a great
+user experience. So, since this is not a critical application, short period of
+down could be acceptable.\\
 	So, as SafeStreet does not need to be up to ensure critical aspects, but still some violations could have only a short period of time to be checked, it will have to guarantee a 99.9\% availability (43 minutes of downtime every month).
 
 \subsubsection{Security}
@@ -42,7 +44,7 @@
     the system must handle 1 million registered users and a peak of 7.000 concurrent requests.
     
 \subsubsection{Maintainability}
-	An easy	to	fix	code, modify or update is preferable because,	according	to	the	circumstances it could be updated. That action should be done without too much pain and with a cheap cost.		
+	An easy	to	fix, modify or update code is preferable because,	according	to	the	circumstances actions on it could be done. That action should be done without too much pain and with a cheap cost.		
 	Appropriate	design	patterns	will	be	used,	as	it	will	be	better	explained	in	a	further	document.    
 	
 \subsubsection{Portability}
