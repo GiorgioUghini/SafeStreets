@@ -112,8 +112,8 @@ one sig PoliceHashes extends AbstrHashes {}
 //TODO: try using abstrHash instead
 sig Hash{} {
     //A hash must belong to either a system hash or a police hash
-    some h1: Hashes, h2: PoliceHashes |
-        this in Violation.(h1.hashes) or this in Violation.(h2.hashes)
+    some h: AbstrHashes |
+        this in Violation.(h.hashes)
 }
 
 //a violation must have exactly one license plate
