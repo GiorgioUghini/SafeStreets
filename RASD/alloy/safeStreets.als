@@ -21,7 +21,8 @@ sig LocalPolice{
     violations: set Violation,
     accidents: set Accident,
     positions: set Position,
-    unsafePositions: set UnsafePosition
+    unsafePositions: set UnsafePosition,
+    confirmedTickets: set Violation
 }
 
 //all licensePlates must belong to a picture
@@ -71,6 +72,22 @@ sig UnsafePosition{
 sig Suggestion {} {
     //every suggestion belongs to an unsafe position
     some u: UnsafeReason | this = u.suggestion
+}
+
+//The hashes calculated by the SafeStreet System
+one sig Hashes{
+    hashes: Violation -> Hash
+}
+
+//The hashes calculated by the police system
+one sig PoliceHashes{
+    hashes: Violation -> Hash
+}
+
+sig Hash{} {
+    //A hash must belong to either a system hash or a police hash
+    some h1: Hashes, h2: PoliceHashes |
+        this in Violation.(h1.hashes) or this in Violation.(h2.hashes)
 }
 
 //a violation must have exactly one license plate
@@ -125,6 +142,18 @@ fact{
         (up in lp.unsafePositions) <=> (up.position in lp.positions)
 }
 
+/* a ticket is confirmed iff its hash on the police system matches the one on
+the SafeStreet System */
+fact {
+    all v: Violation | v in LocalPolice.confirmedTickets iff
+        v.(Hashes.hashes) = v.(PoliceHashes.hashes)
+}
+
+//A violation can be in confirmedTickets only if it has a ticket 
+fact {
+    no v: Violation | v in LocalPolice.confirmedTickets and v.ticket = none
+}
+
 /********************FUNCTIONS*******************/
 fun getViolationsByPosition[p: Position] : set Violation {
     {v: Violation | v.position = p}
@@ -161,8 +190,6 @@ check {
 }
 
 pred show{
-    #UnsafePosition > 1
-    #LocalPolice > 1
-    all lp: LocalPolice | #lp.positions > 0
+    #LocalPolice.confirmedTickets > 1
 }
 run show for 5
