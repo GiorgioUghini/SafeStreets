@@ -1,13 +1,12 @@
 \subsubsection{Performance}
     The application should be able to deliver the violations (including the
-    \hyperref[sec:automatic_tickets]{automatic tickets}
-    ) in an acceptable time,
-    which means at most 15 seconds with a 4G connection, but should average to about 5 seconds.
+    \hyperref[sec:automatic_tickets]{automatic tickets}) in an acceptable time,
+    which means at most 15 seconds, but should average to about 5 seconds.
     This is not a strict requirement, but it improves a lot the user experience and the possibility
     that he does not decide to give up with the upload.
 
     The 
-    \hyperref[sec:data_mining]{data mining}
+    \hyperref[sec:data_mining]{data mining} 
     functionality is not as trivial as the delivery of the violations, but keeping in 
     mind the effectiveness of the user experience it should still be able to deliver results with an
     average waiting time of 5-10 seconds, with an upper bound of 20 seconds.
@@ -24,31 +23,37 @@
     to not become frustrating for the user to use the application, indicatively they should take 5 seconds at most.
     
 \subsubsection{Reliability}
-    The system has no reasons to be highly available except for providing a great user experience.
-    So, since this is not a critical application, short period of down could be acceptable.
+	As the system stores very important data, it must be ensured	that it is highly reliable and fault tolerant. For example, the	central	server,	which contains all the information, should be duplicated.\\The running processes (which provide the automatic ticket functionality) should be trustworthy, so if something goes wrong with an automatic ticket, that report that was generating the ticket should be put in a queue waiting that will be manually analyzed. In this way there must be ensured the consistency of information.\\Any other technique can be	adopted	to	ensure	the	required reliability.
     
 \subsubsection{Availability}
-	Like said before SafeStreet does not need to be up to ensure critical aspects, but since some violations could
-	have only a short period of time to be checked, it will have to guarantee a 99.99\% availability.
+	The system has no reasons to be highly available except for providing a greatuser experience. So, since this is not a critical application, short period ofdown could be acceptable.\\
+	So, as SafeStreet does not need to be up to ensure critical aspects, but still some violations could have only a short period of time to be checked, it will have to guarantee a 99.9\% availability (43 minutes of downtime every month).
 
 \subsubsection{Security}
     Since users will be able to give tickets automatically, security is a key aspect of the application.
     The information contained in the report of a violation must never be altered, and the login information
     must be kept safe to prevent hackers from giving false tickets using stolen identities.\\
-  	Users also give their personal data when registering, and their privacy must be guaranteed.
+    A public key encryption mechanism could be put in place to crypt reports when received by SafeStreets and to decrypt them only when the Police server has received them. As an alternative, the reports could be digitally signed with a trusted key of SafeStreets property.\\
+  	Users also give their personal data when registering, and their privacy must be guaranteed. Techniques such as data encryption could be used to archive this.
 
 \subsubsection{Scalability}
     This application will be a pioneer in this field, so it is difficult to foresee how many users will
-    use it and how. A high degree of scalability is therefore required. To handle the first city, Milan,
-    the system must handle 1 million registered users and a peak of 10.000 concurrent requests.
+    use it and how. A high degree of scalability is therefore required. To handle the first city,
+    the system must handle 1 million registered users and a peak of 7.000 concurrent requests.
     
 \subsubsection{Maintainability}
-	Since the application requires a high degree of scalability, a code easy to fix, modify or update is preferable,
-	because actions on it will probably take place.    
+	An easy	to	fix	code, modify or update is preferable because,	according	to	the	circumstances it could be updated. That action should be done without too much pain and with a cheap cost.		
+	Appropriate	design	patterns	will	be	used,	as	it	will	be	better	explained	in	a	further	document.    
 	
 \subsubsection{Portability}
 	The application has to be compatible with the majority of devices present on the market in the last years, in order to
 	increase the people eligible to become users of SafeStreets.
+	
+\subsubsection{Simple User Interface}
+	The user interface has to be as simple and
+	intuitive as possible, the application should allow an average user to set up
+	an account and start using the application understanding its functionality
+	in no more than a dozen minutes.
 	
 \subsubsection{Accuracy}
     The maximum error that the GPS system should commit for the application to accept a position is 15 meters,
