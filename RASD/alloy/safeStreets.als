@@ -119,7 +119,7 @@ fact {
         v in o1.handledViolations and v in o2.handledViolations
 }
 
-//an unsafePosition must belong to the LocalPolice that has its position
+//an unsafePositions must belong to the LocalPolice that has its position
 fact{
     all up: UnsafePosition | all lp: LocalPolice |
         (up in lp.unsafePositions) <=> (up.position in lp.positions)
