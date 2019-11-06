@@ -105,12 +105,14 @@ fact {
         #{a: Accident | a.position = p and at = a.accidentType} > 1
 }
 
+//2 unsafePositions cannot have the same reason and position
 fact {
     no disj up1, up2 : UnsafePosition | some ur: UnsafeReason, p: Position |
         ur in up1.reasons and ur in up2.reasons
         and p = up1.position and p = up2.position
 }
 
+//2 unsafeReason cannot have the same accident type and violation type
 fact {
     no disj ur1, ur2: UnsafeReason | ur1.accType = ur2.accType and
         ur1.violType = ur2.violType
@@ -166,28 +168,19 @@ fun getLicensePlate[v: Violation] : one LicensePlate {
         x.licensePlate
 }
 
-/******************ASSERTIONS******************/
-
+/*******************ASSERTIONS*******************/
 //2 localPolice cannot have the same violation
 check {
     no disj lp1, lp2: LocalPolice |
         some v: Violation | v in lp1.violations and v in lp2.violations
 }
 
-//a report cannot belong to 2 users
+//a unsafePosition cannot belong to 2 different localPolice
 check {
-    no disj u1, u2: User | some v: Violation | v in u1.reports and v in u2.reports
-} for 5
-
-//2 users cannot have same email
-check {
-    no disj c1, c2: Customer | c1.email = c2.email
-} for 5
-
-check {
-    no up: UnsafePosition | some disj p1, p2: LocalPolice |
-        up in p1.unsafePositions and up in p2.unsafePositions
+    all up: UnsafePosition | one lp: LocalPolice | up in lp.unsafePositions
 }
+
+/*******************PREDICATES*******************/
 
 pred show{
     #LocalPolice.confirmedTickets > 1
