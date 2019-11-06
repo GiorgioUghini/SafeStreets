@@ -109,7 +109,6 @@ one sig Hashes extends AbstrHashes {}
 //The hashes calculated by the police system
 one sig PoliceHashes extends AbstrHashes {}
 
-//TODO: try using abstrHash instead
 sig Hash{} {
     //A hash must belong to either a system hash or a police hash
     some h: AbstrHashes |
