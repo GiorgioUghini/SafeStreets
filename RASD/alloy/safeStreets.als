@@ -193,7 +193,7 @@ fact {
 
 //Violations without tickets do not have an hash
 fact {
-    all v: Violation | v.ticket = none => v !in PoliceHashes.hashes.Hash
+    all v: Violation | v.ticket = none implies v !in PoliceHashes.hashes.Hash
 }
 
 //2 violations cannot have the same hash
