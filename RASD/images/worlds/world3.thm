@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<projection> <type name="Email"/> <type name="Password"/> </projection>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Accident"/>
+   <type name="AccidentType"/>
+   <type name="Customer"/>
+   <type name="Email"/>
+   <type name="Hashes"/>
+   <type name="Int"/>
+   <type name="LicensePlate"/>
+   <type name="LocalPolice"/>
+   <type name="Officer"/>
+   <type name="Password"/>
+   <type name="Picture"/>
+   <type name="PoliceHashes"/>
+   <type name="Position"/>
+   <type name="String"/>
+   <type name="Suggestion"/>
+   <type name="Ticket"/>
+   <type name="univ"/>
+   <type name="UnsafePosition"/>
+   <type name="UnsafeReason"/>
+   <type name="User"/>
+   <type name="Violation"/>
+   <type name="ViolationType"/>
+   <type name="seq/Int"/>
+   <set name="$world3_u" type="Customer"/>
+   <set name="email" type="Customer"/>
+   <set name="password" type="Customer"/>
+</node>
+
+<node visible="no">
+   <type name="AbstrHashes"/>
+   <type name="Hash"/>
+</node>
+
+<edge visible="no">
+   <relation name="$world3_a"> <type name="AccidentType"/> <type name="Accident"/> </relation>
+   <relation name="$world3_h"> <type name="Hash"/> <type name="AbstrHashes"/> </relation>
+   <relation name="$world3_p"> <type name="LicensePlate"/> <type name="Picture"/> </relation>
+   <relation name="$world3_v"> <type name="Position"/> <type name="Violation"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

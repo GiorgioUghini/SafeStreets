@@ -202,6 +202,11 @@ fact {
         v1->h in Hashes.hashes and v2->h in Hashes.hashes
 }
 
+//for a localPolice to confirm a ticket it must be in its violations
+fact {
+    all lp: LocalPolice | all v: Violation | v in lp.confirmedTickets implies v in lp.violations
+}
+
 /*******************ASSERTIONS*******************/
 //2 localPolice cannot have the same violation
 check {
@@ -217,6 +222,11 @@ check {
 //a violation cannot appear 2 times in the hashes system
 check{
     all v: Violation | #v.(Hashes.hashes) = 1
+}
+
+//if a LocalPolice has a confirmedTicket it must have at its position
+check {
+    all lp: LocalPolice | all v: Violation | v in lp.confirmedTickets implies v.position in lp.positions
 }
 
 /*******************PREDICATES*******************/
@@ -237,6 +247,16 @@ pred world2{
     #confirmedTickets = 0
 }
 
-run world1 for 5
+pred world3 {
+    #confirmedTickets > 0
+    #Ticket > #confirmedTickets
+    #Violation > #Ticket
+    #LocalPolice = 2
+    all lp: LocalPolice | lp.violations != none
+    #Accident = 0
+    #AccidentType = 0
+}
 
+run world1 for 5
 run world2 for 5
+run world3 for 5
