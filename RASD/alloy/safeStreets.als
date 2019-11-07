@@ -212,22 +212,22 @@ fact {
 check {
     no disj lp1, lp2: LocalPolice |
         some v: Violation | v in lp1.violations and v in lp2.violations
-}
+} for 5
 
 //a unsafePosition cannot belong to 2 different localPolice
 check {
     all up: UnsafePosition | one lp: LocalPolice | up in lp.unsafePositions
-}
+} for 5
 
 //a violation cannot appear 2 times in the hashes system
 check{
     all v: Violation | #v.(Hashes.hashes) = 1
-}
+} for 5
 
 //if a LocalPolice has a confirmedTicket it must have at its position
 check {
     all lp: LocalPolice | all v: Violation | v in lp.confirmedTickets implies v.position in lp.positions
-}
+} for 5
 
 /*******************PREDICATES*******************/
 
