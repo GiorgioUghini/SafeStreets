@@ -221,9 +221,22 @@ check{
 
 /*******************PREDICATES*******************/
 
-pred show{
-    #LocalPolice.confirmedTickets > 1
-    some v: Violation | v.ticket!=none and v in PoliceHashes.hashes.Hash and
-        v !in LocalPolice.confirmedTickets
+pred world1{
+    #LocalPolice = 2
+    all lp: LocalPolice | #lp.violations>0
+    #LicensePlate > 1
+    #User = 2
+    #Officer = 1
+    all u: User | u.reports != none
 }
-run show for 5
+
+pred world2{
+    #Suggestion = 2
+    all u: UnsafeReason | some up: UnsafePosition |
+        u in up.reasons
+    #confirmedTickets = 0
+}
+
+run world1 for 5
+
+run world2 for 5
