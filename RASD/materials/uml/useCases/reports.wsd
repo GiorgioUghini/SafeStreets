@@ -10,7 +10,7 @@
     U -> S: 2.send_report(report)
     S -> ST: 2.1.check_user_credentials()
     return user data
-    S -> S: 2.2report_is_valid(report)
+    S -> S: 2.2.report_is_valid(report)
     deactivate S
     S -> ST: 2.3store_report(report)
     return ok
@@ -63,6 +63,7 @@
     participant User as U
     participant System as S
     participant Storage as ST
+    participant HashStorage as H
     participant Police as P
 
     autoactivate on
@@ -75,9 +76,15 @@
     S -> S: 2.2.report_is_valid(report)
     deactivate S
     S -> ST: 2.3.store_report_verified(report)
+    S -> H : 2.4 store_hash(report)
     return ok
-    S -> P: 2.4.send_report(report)
-    P -> P: 3.1.process\n_ticket(ticket)
+    return ok
+    S -> P: 2.5.send_report(report)
+    P -> P: 2.6.calc_hash(report)
+    deactivate P
+    P -> S : 2.7.check_hash(hash)
+    return ok
+    P -> P: 2.8.process\n_ticket(ticket)
     deactivate P
     return ok
     return ok, redirect\nto main page

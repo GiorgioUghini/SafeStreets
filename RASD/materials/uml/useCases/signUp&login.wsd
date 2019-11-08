@@ -11,7 +11,7 @@
     U -> S: 2.send_user_data(data)
     S -> S: 2.1.check_validity(data)
     deactivate S
-    S -> ST: 2.2store_data(data)
+    S -> ST: 2.2.store_data(data)
     return ok
     return ok, redirect to\nprofile page
     deactivate U
