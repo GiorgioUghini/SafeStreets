@@ -15,7 +15,6 @@ enum ViolationType
 object TrafficViolation
 object Ticket
 object Position
-object ReducedStatistics
 object Statistics
 object SuggestionSystem
 object PoliceSystem
@@ -24,9 +23,8 @@ note top of ViolationType : eg. parking on bike lane
 
 Customer <|-- User
 Customer <|-- Authority
-Customer --> ReducedStatistics : view
-ReducedStatistics --* Violation
-ReducedStatistics <|-- Statistics
+Customer --> Statistics : view
+Statistics --* Violation
 Authority --> Statistics : view
 User "1" --> "0..n" Violation : send
 Authority "0..n" --> "0..n" Violation : view
