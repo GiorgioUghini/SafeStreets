@@ -1,7 +1,27 @@
 \newcommand{\usecasefigure}[2]{
 	\begin{figure}[htp]
 		\centering
-		\includegraphics[width=0.8\textwidth]{images/useCases/#1.png}
+		\includegraphics[width=1.0\textwidth]{images/useCases/#1.png}
+		\caption{Use case diagram #2}
+		\label{fig:use_cases_#1}
+	\end{figure}
+	\newpage
+}
+
+\newcommand{\usecasefiguresmall}[2]{
+	\begin{figure}[htp]
+		\centering
+		\includegraphics[width=0.95\textwidth]{images/useCases/#1.png}
+		\caption{Use case diagram #2}
+		\label{fig:use_cases_#1}
+	\end{figure}
+	\newpage
+}
+
+\newcommand{\usecasefiguresmaller}[2]{
+	\begin{figure}[htp]
+		\centering
+		\includegraphics[width=0.85\textwidth]{images/useCases/#1.png}
 		\caption{Use case diagram #2}
 		\label{fig:use_cases_#1}
 	\end{figure}
@@ -36,7 +56,7 @@ This section contains all the use cases initially described with the use case UM
 		\input{usecases/tables/recoverpassword}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{password_recovery}{of the password recovery process}
+		\usecasefiguresmall{password_recovery}{of the password recovery process}
 		\newpage
 \end{enumerate}
 \newpage
@@ -68,25 +88,25 @@ This section contains all the use cases initially described with the use case UM
 		\input{usecases/tables/informationMining}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{information_mining}{of the information mining process (unsafe area) for a user}
+		\usecasefiguresmaller{information_mining}{of the information mining process (unsafe area) for a user}
 		\newpage
 	\item \textbf{Information Mining by Officers (Unsafe Area)}\\
 		\input{usecases/tables/informationMiningOfficer}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{information_mining_by_officers}{of the information mining process (unsafe area) for an officer}
+		\usecasefiguresmaller{information_mining_by_officers}{of the information mining process (unsafe area) for an officer}
 		\newpage
 	\item \textbf{Information Mining by Users (Vehicle Violations)}\\
 		\input{usecases/tables/vehicleInformationMining}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{information_mining_vehicle}{of the information mining process (vehicle violations) for an officer}
+		\usecasefiguresmaller{information_mining_vehicle}{of the information mining process (vehicle violations) for an officer}
 		\newpage
 	\item \textbf{Information Mining by Officers (Vehicle Violations)}\\
 		\input{usecases/tables/vehicleInformationMiningOfficer}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{mining_vehicle_officers}{of the information mining process (vehicle violations) for an officer}
+		\usecasefiguresmaller{mining_vehicle_officers}{of the information mining process (vehicle violations) for an officer}
 		\newpage
 \end{enumerate}
 \newpage
@@ -107,7 +127,7 @@ This section contains all the use cases initially described with the use case UM
 	\input{usecases/tables/statisticsConsulting}
 	\newpage
 	\textbf{Diagrams}
-	\usecasefigure{general_statistics}{for an actor examining statistics}
+	\usecasefiguresmall{general_statistics}{for an actor examining statistics}
 	\newpage
 \end{enumerate}
 \newpage
