@@ -25,9 +25,9 @@
     autoactivate on
 
     U -> S: 1.get_statistics_page()
-    S -> ST: 1.1check_user_type()
+    S -> ST: 1.1.check_user_type()
     return user
-    return filters for simple user
+    return filters
     U -> S: 2.send_filters(filters)
     S -> ST: 2.1.query(filters)
     return search results
@@ -48,7 +48,7 @@
     U -> S: 1.get_statistics_page()
     S -> ST: 1.1.check_user_type()
     return authority
-    return filters for authority
+    return filters
     U -> S: 2.send_filters(filters)
     S -> ST: 2.1.query(filters)
     return search results
@@ -100,7 +100,7 @@
     U -> S: 1.get_statistics_page()
     S -> ST: 1.1check_user_type()
     return user
-    return filters for simple user
+    return filters
     U -> S: 2.send_filters(filters)
     S -> ST: 2.1.query(filters)
     return search results
@@ -121,7 +121,7 @@
     U -> S: 1.get_statistics_page()
     S -> ST: 1.1.check_user_type()
     return authority
-    return filters for authority
+    return filters
     U -> S: 2.send_filters(filters)
     S -> ST: 2.1.query(filters)
     return search results
