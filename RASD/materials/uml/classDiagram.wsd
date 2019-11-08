@@ -17,9 +17,11 @@ object Ticket
 object Position
 object Statistics
 object SuggestionSystem
+object Suggestion
+object UnsafePosition
 object PoliceSystem
 
-note top of ViolationType : eg. parking on bike lane
+note bottom of ViolationType : eg. double parking
 
 Customer <|-- User
 Customer <|-- Authority
@@ -30,6 +32,10 @@ User "1" --> "0..n" Violation : send
 Authority "0..n" --> "0..n" Violation : view
 Authority --> SuggestionSystem : view
 SuggestionSystem --> Violation : "use"
+SuggestionSystem --> Suggestion : "create"
+SuggestionSystem --* UnsafePosition
+UnsafePosition --* Position 
+UnsafePosition --* ViolationType
 PoliceSystem <-- SuggestionSystem : "use"
 Violation <|-- TrafficViolation
 Violation <|-- Ticket
