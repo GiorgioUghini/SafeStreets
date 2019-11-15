@@ -61,9 +61,7 @@
 
 @startuml automatic_traffic_ticket
     participant User as U
-    participant System as S
-    participant Storage as ST
-    participant HashStorage as H
+    participant SafeStreet as S
     participant Police as P
 
     autoactivate on
@@ -71,14 +69,14 @@
     U -> S: 1.get_report_violation\n_page()
     return
     U -> S: 2.send_report(report)
-    S -> ST: 2.1.check_user_credentials()
-    return user data
+    S -> S: 2.1.check_user_credentials()
+    deactivate S
     S -> S: 2.2.report_is_valid(report)
     deactivate S
-    S -> ST: 2.3.store_report_verified(report)
-    S -> H : 2.4 store_hash(report)
-    return ok
-    return ok
+    S -> S: 2.3.store_report_verified(report)
+    deactivate S
+    S -> S : 2.4 store_hash(report)
+    deactivate S
     S -> P: 2.5.send_report(report)
     P -> P: 2.6.calc_hash(report)
     deactivate P
