@@ -54,6 +54,10 @@ The user will be indirectly able to give tickets when he spots a violation. This
 the possibility to confirm that he is sure that he is signalling an actual violation and wants to give a ticket.
 In this case the system reads the licence plate and uses the police system to automatically issue a ticket.
 
+The tickets are first checked by a computer vision mechanism that takes several parameters (position, pictures,
+similar violations) to spot wrong violation and forward them to an officer for a double check. The officer can then
+accept the ticket or delete it.
+
 Security is a key aspect of this functionality. The system must be sure that the signal has not been modified.
 To achieve this, all messages are encrypted with TLS and an hash of every picture is stored on a server which will not
 allow any modifications to it, and will be used by the police systems to confirm the tickets.
