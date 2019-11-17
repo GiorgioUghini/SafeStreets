@@ -1,0 +1,37 @@
+The logical division of the application consists of 3 layers that will be shown here: presentation, application and data.
+\\Here we provide for each tier the definition, choice reasons and used technology:
+\subsubsection{Presentation layer}\label{presentationlayer}
+the presentation layer consists of a mobile application for the users and a website for the officers.
+The application will be available from the major app stores while the website will be distributed through a web server.
+It is important to note that both the application and the website will only provide the user interface and will retrieve data from the application layer.
+
+\subsubsection{Application layer}\label{applicationlayer}
+This layer will employ a microservices architecture.
+Each microservice will handle a single functionality of the application in an atomic and stateless manner.
+Also, each service will expose a REST interface accessible over HTTPS to be able to handle requests from the clients, the police systems and other microservices.
+
+Microservices will be deployed in containers that will be able to efficiently scale based on the load on the single service, thus ensuring maximum scalability and elasticity and never wasting resources.
+Since microservices are stateless by definition, redundancy can be easily implemented. This is a key point toward the availability requirement.
+
+This architecture opens the possibility for some services to be bought instead of being implemented from scratch. For example the login/registration service will use the \href{https://cloud.ibm.com/catalog/services/app-id#about}{App ID} service from IBM instead of a homemade solution.
+
+The main services are:
+\begin{itemize}
+	\item \textbf{Login and registration}
+	\item \textbf{Violations and Tickets management}
+	\item \textbf{Statistics}
+	\item \textbf{Metadata acquisition in images} - exploits computer vision to extract info from pictures, like the car color and model
+	\item \textbf{Tickets checking} - exploits computer vision to automatic check tickets, using information from different sources
+	\item \textbf{Unsafe positions calibration} - uses an AI to adjust the unsafe positions recommendations based on those that were previously accepted/rejected
+\end{itemize}
+
+\subsubsection{Data layer}\label{datalayer}
+Each microservice will have its own storage engine that cannot be directly contacted by other services. In particular:
+\begin{itemize}
+	\item the \textbf{login and registration} and the \textbf{violation and tickets management} services will have a relational database. These services will probably be the most used and will therefore exploit database distribution techniques.
+	\item the \textbf{statistics} service will use a data warehouse to perform complex queries and a non-relational database engine to cache the most used results
+	\item both the computer vision services will retrieve data from the violation service and use the storage system of the provider of these services
+	\item the unsafe position calibration service will retrieve data from the violation service and the police service and store them on its relational database, other data structure specific for the AI implementation will depend on the external provider of this service
+\end{itemize}
+
+All storage systems must have replicas and scheduled backups in order to avoid data loss.

@@ -1,37 +1,19 @@
+This section of the document gives a detailed view of the physical and logical infrastructure of the system-to-be. 
+\\It provides the different types of view over the system as well as the description of the main components and their interactions.
 The logical division of the application consists of 3 layers: presentation, application and data.
+\begin{enumerate}
+	\item Subsection \ref{presentationlayer} \textbf{Presentation layer}: The Presentation Layer is the space where interactions between humans and machines occur. The goal of this interaction is to allow effective operation and control of the machine from the human end, whilst the machine simultaneously feeds back information to the server.
+	\item Subsection \ref{applicationlayer} \textbf{Application layer}: The Application Layer is the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed.
+	\item Subsection \ref{datalayer} \textbf{Data layer}: The Data Layer is physically where the data are stored. On this layer happen all the retrieve and update operations on the data. 
+\end{enumerate}
 
-\subsubsection{Presentation layer}
-the presentation layer consists of a mobile application for the users and a website for the officers.
-The application will be available from the major app stores while the website will be distributed through a web server.
-It is important to note that both the application and the website will only provide the user interface and will retrieve data from the application layer.
-
-\subsubsection{Application layer}
-This layer will employ a microservices architecture.
-Each microservice will handle a single functionality of the application in an atomic and stateless manner.
-Also, each service will expose a REST interface accessible over HTTPS to be able to handle requests from the clients, the police systems and other microservices.
-
-Microservices will be deployed in containers that will be able to efficiently scale based on the load on the single service, thus ensuring maximum scalability and elasticity and never wasting resources.
-Since microservices are stateless by definition, redundancy can be easily implemented. This is a key point toward the availability requirement.
-
-This architecture opens the possibility for some services to be bought instead of being implemented from scratch. For example the login/registration service will use the \href{https://cloud.ibm.com/catalog/services/app-id#about}{App ID} service from IBM instead of a homemade solution.
-
-The main services are:
-\begin{itemize}
-    \item \textbf{Login and registration}
-    \item \textbf{Violations and Tickets management}
-    \item \textbf{Statistics}
-    \item \textbf{Metadata acquisition in images} - exploits computer vision to extract info from pictures, like the car color and model
-    \item \textbf{Tickets checking} - exploits computer vision to automatic check tickets, using information from different sources
-    \item \textbf{Unsafe positions calibration} - uses an AI to adjust the unsafe positions recommendations based on those that were previously accepted/rejected
-\end{itemize}
-
-\subsubsection{Data layer}
-Each microservice will have its own storage engine that cannot be directly contacted by other services. In particular:
-\begin{itemize}
-    \item the \textbf{login and registration} and the \textbf{violation and tickets management} services will have a relational database. These services will probably be the most used and will therefore exploit database distribution techniques.
-    \item the \textbf{statistics} service will use a data warehouse to perform complex queries and a non-relational database engine to cache the most used results
-    \item both the computer vision services will retrieve data from the violation service and use the storage system of the provider of these services
-    \item the unsafe position calibration service will retrieve data from the violation service and the police service and store them on its relational database, other data structure specific for the AI implementation will depend on the external provider of this service
-\end{itemize}
-
-All storage systems must have replicas and scheduled backups in order to avoid data loss.
+Then, in the following sections, a top down approach will be adopted for the description of the architectural design of the system:
+\begin{description}
+	\item[Section \ref{higharch}] \textbf{High-Level components}: A description of high-level components and their interactions.
+	\item[\ref{componentview}] \textbf{Component View}: A detailed insight of the components described in the previous section.
+	\item[\ref{deploymentview}] \textbf{Deployment view}: A set of indications on how to deploy the illustrated components on physical tiers.
+	\item[\ref{runtimeview}] \textbf{Runtime View}: A thorough description of the dynamic behavior of the software with diagrams for the key-functionalities.
+	\item[\ref{componentinterfaces}] \textbf{Component Interfaces}: A description of the different types of interfaces among the various described components.
+	\item[\ref{archstyles}] \textbf{Selected Architectural styles and patterns}: A list of the architectural styles, design patterns and paradigms adopted in the design phase.
+	\item[\ref{otherdecisions}] \textbf{Other design decisions}: A list of all other relevant design decisions that were not mentioned before.
+\end{description}
