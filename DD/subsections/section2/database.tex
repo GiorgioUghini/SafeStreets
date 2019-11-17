@@ -1,0 +1,8 @@
+\subsubsection{Database}
+The data layer consists in a simple DBMS component, in order to manage the basic SafeStreets functions that does not have a microservice. For all the microservice then, there's no need for a proprietary database because it will be included in the microservice.
+\\Regardless of the implementation of the main DBMS, it must guarantee the correct functioning of concurrent transactions and the ACID properties.
+This component should be a relational DBMS, since it will be very simple and the application does not need, in terms of data storage, a more complex structure than the simple one provided by the relational data structure.\\
+Sensible data such as passwords and personal information must be encrypted properly before being stored in the selected microservice. Users must be granted access only upon provision of correct and valid credentials.\\
+Here we include all the E-R diagrams for all microservice and the general onw that illustrates a detailed view over the database schemas and attributes.
+
+%Mettiamo qui il diagramma ER del db
