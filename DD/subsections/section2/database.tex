@@ -1,5 +1,5 @@
 Each microservice will have its own data storage system but not all of them will result to be a database. In particular, those microservices who will need object storage for training purposes (such as Computer Vision and Data Mining) will use a transparent-to-us data layer.\\
-However, to make SafeStreets data's persistent these database will be deployed:
+However, to make SafeStreets data's persistent, these database will be deployed:
 \begin{itemize}
 	\item \textbf{Violations DB}: This database will store all the data regarding a single violation except for images. As the data inside it are well structured this database will be a relational database.
 	\item \textbf{Statistics DB}: As opposed to the above database, the Statistics DB will be deployed to store all internal and external data regarding the usage of SafeStreets. Indeed, the mechanism chosen for such DB is the data warehouse container.
@@ -11,4 +11,4 @@ Obliviously, all the used systems must obey to the laws regarding data protectio
 \item Users must be granted access only upon provision of correct and valid credentials.
 \end{itemize}
 
-Below we include some graphs to better understand all our microservices
+Below we include a description of each microservice (including DBMS) to better understand them all, then we'll describe each single database in section \ref{databasecomponent}.

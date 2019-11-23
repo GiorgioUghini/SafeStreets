@@ -11,6 +11,7 @@
 \usepackage{verbatim}
 \usepackage{underscore}
 \usepackage{listings}
+\usepackage{lstautogobble}
 
 \hypersetup{pdftitle={SafeStreets DD},
 	pdfauthor={Andrea Furlan, Cosimo Russo, Giorgio Ughini},        
@@ -20,6 +21,13 @@
 	citecolor=blue,
 	filecolor=black,
 	urlcolor=[rgb]{0.59, 0, 0.78}
+}
+\lstset{
+	string=[s]{"}{"},
+	stringstyle=\color{blue},
+	comment=[l]{:},
+	commentstyle=\color{black},
+	autogobble=true
 }
 
 \begin{document}
@@ -76,15 +84,15 @@
 \subsection{High-Level components: general architecture identification}\label{higharch}
 \input{subsections/section2/higharch}
 \subsection{Component View}\label{componentview}
-\subsubsection{Database}
+\subsubsection{Database overview}
 \input{subsections/section2/database}
 \subsubsection{Microservices}
 \input{subsections/section2/microservices}
 \clearpage
+\subsubsection{Database components}\label{databasecomponent}
+\input{subsections/section2/databasedetailed}
 \subsubsection{High-level component diagram}
-%TODO must discuss
 \subsubsection{Low-level component diagram}
-%TODO must discuss
 
 \subsection{Deployment View}\label{deploymentview}
 \input{subsections/section2/deploymentView}
