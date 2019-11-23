@@ -6,7 +6,7 @@ The user needs to insert a set of photos where a license plate is readable, and 
 \clearpage
 \subsubsection{Statistics Construction}
 At the end of the day the statistics need to be updated in order to offer to the users and to the officers only recent, and therefore consistent, information.
-When the servers will probably have the lowest load, so in the middle of the night, SafeStreets will at first retrieve the new data that are now present in both the reports DB and the accidents DB. Once the complex queries have returned the new information the data needs to be aggregate and elaborate in order to exhibit the updated statistics to the costumers of SafeStreets. 
+When the servers will probably have the lowest load, so in the middle of the night, SafeStreets will at first retrieve the new data that are now present in the SafeStreets database. Once the complex queries have returned the new information the data needs to be aggregate and elaborate in order to exhibit the updated statistics to the costumers of SafeStreets. 
 \\
 \\
 \\
@@ -15,7 +15,7 @@ When the servers will probably have the lowest load, so in the middle of the nig
 \makebox[\textwidth][c]{\includegraphics[width=1.0\textwidth]{diagrams/images/statisticsConstruction}}
 \clearpage
 \subsubsection{Data mining for Interventions}
-At the end of the day as soon as the statistics are completed, using the data just aggregated instead of doing the same process again, reducing the stress on the servers, the process of suggesting possible interventions needs to be executed. To do so, mining data using both SafeStreets data and municipality information on the accidents occurred in the city is necessary.
+At the end of the day as soon as the statistics are completed, the process of suggesting possible interventions needs to be executed. To do so, mining data using both SafeStreets data and municipality information on the accidents occurred in the city is necessary.
 The flow is similar to the one for the statistics, since both needs to retrieve data, analyze it and produce some result with it.
 After the process of computing information to suggest interventions in the city the authorities must be warned in order to actually intervene.
 \\
