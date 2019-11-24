@@ -1,0 +1,14 @@
+This sections includes further details on the interfaces between the custom internal components of the system and the IBM micro-services illustrated before. The communications among components should take place only through APIs, some of them need to be custom developed and others are already exposed by the services described in \ref{microservices}. Therefore the main APIs needed to guarantee the basic functions of SafeStreets are split into Custom APIs and External APIs.
+
+\subsubsection{Custom APIs}
+\begin{itemize}
+	\item \textbf{Violations:} When a user sends a report to SafeStreets servers, the client that initiates the request will POST through a defined API the information required by the violation form, that will reply with a OK or ERROR message of some sort. 
+	\item \textbf{Statistics:} Whenever a user wants to consult some statistic an API that given some specific bounds always returns an object that describes the information requested is necessary. 
+\end{itemize}
+
+\subsubsection{External APIs}
+\begin{itemize}
+	\item \textbf{GPS:} When a violation is being performed by a SafeStreets customer the field for the violation address should be autofilled by the application when possible. To do so some glocalization APIs like the ones that Google Maps provides are needed.
+	\item \textbf{OCR:} When a violation is being performed by a SafeStreets customer the field for the license plate needs to be autofilled by the application. To do so an API exposed by Watson that given a set of images returns some text that can be compliant with a license plate needs to be used. The API should also accept a set of wrong license plate in case the precedent output of the API call was wrong and the user realised that the license plate given didn't correspond to the actual license plate of the vehicle committing the violation.
+	\item \textbf{Communication:} Every micro-service should exposes a set of API that guarantee the communication among components since every micro-service is neither unaware of others or independent.
+\end{itemize}
