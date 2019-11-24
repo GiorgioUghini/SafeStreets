@@ -30,6 +30,14 @@
 	autogobble=true
 }
 
+\newcommand{\defaultFigure}[3][1]{
+	\begin{figure}[h!]
+		\makebox[\textwidth]{\includegraphics[width=#1\textwidth]{images/#2}}
+		\caption{#3}
+	\end{figure}
+	\FloatBarrier
+}
+
 \begin{document}
 	\begin{titlepage}
 		\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
@@ -92,7 +100,9 @@
 \subsubsection{Database components}\label{databasecomponent}
 \input{subsections/section2/databasedetailed}
 \subsubsection{High-level component diagram}
+\input{subsections/section2/highLevelComponentDiagram.tex}
 \subsubsection{Low-level component diagram}
+\input{subsections/section2/lowLevelComponentsDiagram.tex}
 
 \subsection{Deployment View}\label{deploymentview}
 \input{subsections/section2/deploymentView}

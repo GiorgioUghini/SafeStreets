@@ -1,0 +1,10 @@
+This section provides a high level diagram of the architecture of SafeStreet, listing all the microservices and how they are structured in the cloud.
+
+\defaultFigure[1.15]{HighLevelArchitecture.png}{High level architecture}
+
+As show from the figure above, our architecture is composed of several microservices and a web server hosted inside the IBM cloud.
+
+The service inside the box called \textit{first line} are directly accessible for the user, so they will expose an API through a public URL.
+Those inside the \textit{support} box provide functions and data to the first line service and will not be exposed outside of the IBM network.
+
+The only purpose of the web server is to serve the static webpages for the CMS system of the local police.
