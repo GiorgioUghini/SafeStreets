@@ -17,21 +17,18 @@ This architecture opens the possibility for some services to be bought instead o
 
 The main services are:
 \begin{itemize}
-	\item \textbf{Login and registration}
+	\item \textbf{Users Management} - Login and registration
 	\item \textbf{Violations and Tickets management}
+	\item \textbf{Tickets Hashing system} - Allows the police to check for the integrity of a ticket by comparing an hash
 	\item \textbf{Statistics}
-	\item \textbf{Metadata acquisition in images} - exploits computer vision to extract info from pictures, like the car color and model
-	\item \textbf{Tickets checking} - exploits computer vision to automatic check tickets, using information from different sources
-	\item \textbf{Unsafe positions calibration} - uses an AI to adjust the unsafe positions recommendations based on those that were previously accepted/rejected
+	\item \textbf{Tickets checking} - Exploits computer vision and data mining to automatically check tickets, using information from different sources. Tickets that are suspected to be invalid are then sent to the local police for a double check.
+	\item \textbf{Unsafe positions} - Uses an AI to extract unsafe positions from violations and accidents and to provide a possible solution to it. Such solutions are then available for the local police.
+	\item \textbf{Computer Vision} - Extract info from pictures, like the car color and model
+	\item \textbf{Data Mining} - Extracts patterns from huge amounts of data useful for other services
 \end{itemize}
 
 \subsubsection{Data layer}\label{datalayer}
-Each microservice will have its own storage engine that cannot be directly contacted by other services. In particular:
-\begin{itemize}
-	\item the \textbf{login and registration} and the \textbf{violation and tickets management} services will have a relational database. These services will probably be the most used and will therefore exploit database distribution techniques.
-	\item the \textbf{statistics} service will use a data warehouse to perform complex queries and a non-relational database engine to cache the most used results
-	\item both the computer vision services will retrieve data from the violation service and use the storage system of the provider of these services
-	\item the unsafe position calibration service will retrieve data from the violation service and the police service and store them on its relational database, other data structure specific for the AI implementation will depend on the external provider of this service
-\end{itemize}
+Each microservice will have its own storage engine that cannot be directly contacted by other services. Pay-per-use services, such as \textit{Users management}, have their internal storage system that is abstracted,
+for the services that need a storage system it will be hosted in the cloud and managed by IBM, billed per GB used. This system is the best possible abstraction for scalability.
 
-All storage systems must have replicas and scheduled backups in order to avoid data loss.
+All storage systems are guaranteed to have replicas and scheduled backups in order to avoid data loss.
