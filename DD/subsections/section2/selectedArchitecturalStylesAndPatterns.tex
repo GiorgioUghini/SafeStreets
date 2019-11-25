@@ -1,0 +1,26 @@
+\subsubsection{Microservices}
+In a microservices architecture the system is divided into several autonomous services, each one is self-contained and implements a single business capability.
+
+All the functionalities provided by the microservices to the final users are exposed through a REST API, while the internal communications service is provided, in our case, by IBM itself.
+
+Some of the main advantages offered by this architecture are:
+\begin{itemize}
+    \item \textbf{Decoupling} - This allows to easily build, scale and alter services indepentently, which is particularly important for SafeStreets since it is difficult to foresee how it will scale.
+    \item \textbf{Autonomy} - Developers can work indepentently on different services without complicated merges or the need to communicate too much, thus increasing speed.
+    \item \textbf{Responsibility} - A single microservice does not focus on the entire application but on a single component that is handled as a product for which it is responsible
+    \item \textbf{Decentralized Governance} - Each service can be developed with its own application stack that is the best for it, so you are not stuck with a single technology just because you started the project with it.
+    \item \textbf{Agility} - Microservices support agile development. Any new feature can be quickly developed and discarded again.
+\end{itemize}
+
+\defaultFigure{microservices.jpg}{General scheme for a microservices architecture}
+
+\subsubsection{Client - Server}
+The most common pattern used on the web, it consists of several clients (mainly smartphones and computers) that contact a server which is always available to answer to requests and is reachable through its public IP.
+
+In our case the concept of server is abstract because the application is not provided by a single, monolithic server but most principles remain.
+
+\subsubsection{REST API}
+REST stands for Representational State Transfer, is an architectural style for designing network application.
+It is the most obvious choice to use with microservices if scalability is required because it forces statelessness.
+
+REST relies on a client-server architecture and uses the HTTP protocol.
