@@ -4,14 +4,14 @@ its internal structure.
 \defaultFigure[1.15]{LowLevelArchitecture.png}{Low level components diagram}
 \begin{itemize}
     \item \textbf{Webserver} - 
-    The webserver is containerized in a Docker Apache container and orchestrated by the Kubernetes service for IBM.
+    The webserver is containerized in a Docker Apache container and orchestrated by the \hyperlink{kubernetes}{Kubernetes service} for IBM.
     This composition allows to scale the server horizontally by just adding or removing containers with few click based on the load on the server.
 
-    \item \textbf{Cloud Object Storage}
+    \item \hyperlink{cloudObjectStorage}{\textbf{Cloud Object Storage}}
     All the images will be stored on this component and will be accessible by a public URL. Metadata received from the computer vision service will be store here as metadata of the image they belong to.
 
     \item \textbf{Violations and Tickets}
-    Receives violations from users and gives access to violations to officers and other microservices. It consists of a proprietary web application that exposes a REST API and is connected to a managed PostgreSQL database.
+    Receives violations from users and gives access to violations to officers and other microservices. It consists of a proprietary web application that exposes a REST API and is connected to a managed \hyperlink{postgres}{PostgreSQL database}.
 
     \item \textbf{Tickets hashing system}
     Stores the hash of the violations with automatic ticket option on a database that allows only inserts and reads.
@@ -19,14 +19,14 @@ its internal structure.
     and for the police to send and hash for a ticket that will be compared with the one stored in its database.
 
     \item \textbf{Statistics}
-    A simple Python application that every day, when the load on the system is low, contacts the \textit{Violations and tickets} service to grab the violations for that day and builds new statistics that stores inside its Postgres database.
+    A simple Python application that every day, when the load on the system is low, contacts the \textit{Violations and tickets} service to grab the violations for that day and builds new statistics that stores inside its \hyperlink{postgres}{Postgres database}.
     It also provides and API for users and officers to query for such statistics.
 
     \item \textbf{Suggestions}
-    Uses the power of the \textit{computer vision} and \textit{data mining} services to identify unsafe areas and to provide
+    Uses the power of the \hyperlink{watson}{computer vision} and \hyperlink{discovery}{data mining} services to identify unsafe areas and to provide
     suggestions on how to fix them. It consists of a Python application that queries data from such services and provides an API for the local police to retrieve the
     suggestions found, which are stored in a relational database.
 
     \item \textbf{Other services}
-    The \textit{computer vision}, \textit{data mining} and \textit{User management} services are well described in other sections and do not have any components relevant here since they are pay-per-use services.
+    The \hyperlink{watson}{computer vision}, \hyperlink{discovery}{data mining} and \hyperlink{appid}{User management} services are well described in other sections and do not have any components relevant here since they are pay-per-use services.
 \end{itemize}
