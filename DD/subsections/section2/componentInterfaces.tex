@@ -1,12 +1,21 @@
-This sections includes further details on the interfaces between the custom internal components of the system and the IBM micro-services illustrated before. The communications among components should take place only through APIs, some of them need to be custom developed and others are already exposed by the services described in \ref{microservices}. Therefore the main APIs needed to guarantee the basic functions of SafeStreets are split into Custom APIs and External APIs.
-
-\subsubsection{Custom APIs}
+This sections includes further details on the interfaces between the custom internal components of the system and the IBM micro-services illustrated before. The communications among components should take place only through APIs, some of them need to be custom developed and others are already exposed by the services described in \ref{microservices}.
+\\ The customs APIs needed for the application well being are briefly described in the following list:
 \begin{itemize}
-	\item \textbf{Violations:} When a user sends a report to SafeStreets servers, the client that initiates the request will POST through a defined API the information required by the violation form, that will reply with a OK or ERROR message of some sort. 
-	\item \textbf{Statistics:} Whenever a user wants to consult some statistic an API that given some specific bounds always returns an object that describes the information requested is necessary. 
+	\item \textbf{[POST] Send a violation:} Used from the client application when a user wants to send a new ticket violation.
+	\item \textbf{[GET] Retrieve a specific violation:} Used from the officers portal to get the information of a specific violation.
+	\item \textbf{[GET] Retrieve all the violations of a user:} Used from the client application to get all the user's violations.
+	\item \textbf{[GET] Retrieve all the violations pending:} Used from the officers portal to get all the violation that are yet to be processed.
+	\item \textbf{[POST] Change the status of a violation:} Used from the officers portal to change the status of a violation just analyzed from PENDING to ACCEPTED/DENIED.
+	\item \textbf{[GET] Get the hash of a specific violation:}  Used from both the client application and the officers portal to check the integrity of a specific violation (chain of trust). 
+	\item \textbf{[GET] Get the information of a specific area:} Used from both the client application and the officers portal to retrieve the information of an area that may be unsafe (both) or not (only officers).
+	\item \textbf{[GET] Get the information of the worst drivers:} Used from both the client application and the officers portal to retrieve the information about the worst drivers in the SafeStreets database. The officers should be able to acknowledge more information of the drivers than the users.
+	\item \textbf{[GET] Retrieve a specific statistic:} Used from both the client application and the officers portal to get the information of a specific thing given some proper bounds.
+	\item \textbf{[GET] Retrieve a general overview of the statistics:} Used from the client application so that the user could have a more general idea when he accesses the statistic section.
+	\item \textbf{[GET] Retrieve the suggestions of a specific area:} Used from the officers portal to get the possible suggestions elaborated with the data mining.
+	\item \textbf{[POST] Change the password of a user:} Used from the client application to change the password of its user.
+	\item \textbf{[POST] Ban a user:} Used from the officers portal in order to ban a malicious user of the application.
 \end{itemize}
-
-\subsubsection{External APIs}
+The external APIs needed for the application well begin (except the one that each micro-services already uses) are briefly described in the following list:
 \begin{itemize}
 	\item \textbf{GPS:} When a violation is being performed by a SafeStreets customer the field for the violation address should be autofilled by the application when possible. To do so some glocalization APIs like the ones that Google Maps provides are needed.
 	\item \textbf{OCR:} When a violation is being performed by a SafeStreets customer the field for the license plate needs to be autofilled by the application. To do so an API exposed by Watson that given a set of images returns some text that can be compliant with a license plate needs to be used. The API should also accept a set of wrong license plate in case the precedent output of the API call was wrong and the user realised that the license plate given didn't correspond to the actual license plate of the vehicle committing the violation.
