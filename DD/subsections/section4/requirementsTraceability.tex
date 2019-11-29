@@ -1,0 +1,44 @@
+In order to have a simplified and schematic view over the designed components that are going to satisfy the requirements and provide the functionalities which were identified in the RASD we define a formal mapping that explicitely correlates the Goals and functions with one or more Components that should be able to achieve the goal and create the functionality.
+
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+Goal&Functions&Components\\
+\hline
+\textbf{[G1]:}Allowing users to notify officers when particular parking violations occur.&
+\textbf{[F1]:}Notification of Violations&
+\textbf{[M2:]}\hyperlink{watson}{IBM Watson Visual Recognition}\newline\textbf{[M4:]}\hyperlink{cloudObjectStorage}{IBM Cloud Object Storage}\\
+\hline
+\textbf{[G2]:}Permitting both users and officers to learn which are the most unsafe areas in their jurisdiction.&
+\textbf{[F2]:}Data Mining&
+\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\newline\textbf{[M6:]}\hyperlink{postgres}{IBM Cloud Databases for PostgreSQL}\\
+\hline
+\textbf{[G3]:}Suggesting possible interventions to potentially unsafe areas in the city.&
+\textbf{[F3]:}Request for interventions&
+\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\newline\textbf{[M5:]}\hyperlink{cloudant}{IBM Cloudant}\\
+\hline
+\textbf{[G4]:}Allowing the authorities to generate automatic parking violation tickets from users’ reports.&
+\textbf{[F4]:}Automatic Tickets&
+\textbf{[M2:]}\hyperlink{watson}{IBM Watson Visual Recognition}\newline\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\\
+\hline
+\textbf{[G5]:}Permitting both users and officers to learn which vehicles commit the most violations.&
+\textbf{[F2]:}Data Mining\newline\textbf{[F5]:}Statistics&
+\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\newline\textbf{[M6:]}\hyperlink{postgres}{IBM Cloud Databases for PostgreSQL}\\
+\hline
+\textbf{[G6]:}Permitting customers to apprehend the possible effectiveness of these mechanisms.&
+\textbf{[F2]:}Data Mining\newline\textbf{[F5]:}Statistics&
+\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\newline\textbf{[M6:]}\hyperlink{postgres}{IBM Cloud Databases for PostgreSQL}\\
+\hline
+\textbf{[G7]:}Allowing both users and officers to learn the analytics of the tickets given in their city.&
+\textbf{[F2]:}Data Mining\newline\textbf{[F5]:}Statistics&
+\textbf{[M3:]}\hyperlink{discovery}{IBM Discovery}\newline\textbf{[M6:]}\hyperlink{postgres}{IBM Cloud Databases for PostgreSQL}\\
+\hline
+-&\textbf{[F0]:}User data management&\textbf{[M1:]}\hyperlink{appid}{IBM App ID}\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Requirements Traceability} 
+
+\end{table}
