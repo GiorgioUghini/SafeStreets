@@ -39,7 +39,13 @@ In this subsection it is explained which microservice will be custom and which w
 	
 	\item \textbf{Relational Database - \href{https://cloud.ibm.com/catalog/services/databases-for-postgresql}{IBM Cloud Databases for PostgreSQL}}: \hypertarget{postgres}{} A relational DBMS was chosen for all the Databases that contain structured data and on which many queries will be executed (Violation, Statistics). Postgres was picked over all database because it is a powerful, open source object-relational database with JSON support, that gives the best of both the SQL and NoSQL worlds. The advantages in using an IBM Cloud Service to deploy such service relies on the fact that it allows us to scale disk and RAM independently to best fit SafeStreets application requirements.
 	\\IBM Cloud Databases provide out-of-the-box integration with IBM Identity and Access Management that integrates completely into the SafeStreets architecture. 
-	\defaultFigure[0.7]{microservices/postgres.png}{Scalable SafeStreets architecture to handle millions of users.}
-
-	\item \textbf{Kubernetes - \href{https://cloud.ibm.com/kubernetes/catalog/cluster}{Kubernetes Service}}: \hypertarget{kubernetes}{}
+	\defaultFigure[0.8]{microservices/postgres.png}{Scalable SafeStreets architecture to handle millions of users.}
+	\clearpage
+	\item \textbf{Container orchestration system - \href{https://cloud.ibm.com/kubernetes/catalog/cluster}{Kubernetes Service}}: \hypertarget{kubernetes}{} As SafeStreets popularity is unpredictable because no such service actually exists, the resource usage optimization is mandatory. Considered that all the SafeStreets microservices will run in a containerized environment, we will use Kubernetes to manage all their workloads across multiple hosts, and to offer management tools for automating, monitoring, and scaling such containerized apps with no manual intervention. In addition, using such architecture allows SafeStreets to reduce cluster downtime such as during master updates with highly available masters.
+	Here we include an image that details all the components of the Kubernates architecture that it abstracts into our managed node. 
+	\defaultFigure[0.9]{microservices/kubernatessafestreets.png}{Kubernates SafeStreets managed node}
+	Then, in the following page, we are sticking the full version of the Kubernates SafeStreets architecture, rotated to be readable even on paper documents.
+	\clearpage
+	\defaultFigure[0.75]{microservices/kubernates.png}{Kubernates Full SafeStreets Architecture}
+	
 \end{itemize}
