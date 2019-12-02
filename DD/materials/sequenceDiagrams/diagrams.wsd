@@ -1,0 +1,39 @@
+@startuml LoginRegistration
+participant User as U
+participant Microservice as M
+participant AppId as A
+
+autoactivate on
+U -> M: unauthorizedRequest()
+return redirect to login page
+U -> A: login(username, password)
+return token
+U -> M: authorizedRequest(token)
+M -> A: getUser(token)
+return user info
+return ok
+@enduml
+
+@startuml CreateViolation
+    participant User as U
+    participant "CloudObject\nStorage" as COS
+    participant Violations as V
+    participant ViolationsDatabase as VD
+    participant Statistics as S
+    participant DataMining as DM
+    participant ComputerVision as CV
+    autoactivate on
+
+    U -> COS: storePictures(pics)
+    return URLs
+    U -> V: createViolation(vData)
+    V -> CV: sendImages(URLs)
+    V -> VD: storeViolation(vData)
+    return ok
+    return metadata
+    V -> DM: sendViolation(vData, metadata)
+    V -> S: sendViolation(vData, metadata)
+    return ok
+    return ok
+    return ok
+@enduml

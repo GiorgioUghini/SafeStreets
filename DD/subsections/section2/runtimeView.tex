@@ -1,0 +1,13 @@
+\subsubsection{Signup/Login}
+This diagram shows how the app handles all the unauthorized requests. It works in the same way for all the requests that require authentication and for all the microservices.
+
+When the user contacts the microservices without being logged in, he is redirected to the login/registrazion page, where he sends the login information directly to App ID, which responds with a token. The user can then use this token to identify itself with all the microservices, even if his path started from another one.
+\defaultFigure[0.8]{sequenceDiagrams/LoginRegistration.png}{sequence diagram of the login process}
+
+From now on we will suppose that each request that requires authentication already has a token.
+
+\subsubsection{Create Violation}
+When a user submits a violation, the request is split into 2 parts: first, the pictures are stored in the Cloud Object Storage and their URLs are collected by the user client, then the text fields, along with the URLs, go directly to the violations microservice.
+
+The pictures are sent to the computer vision service to retrieve metadata, identifying objects in the picture. In parallel, the data regarding the violation (vData) is stored inside the violations database. Once the metadata have been retrieved, the couple (vData, metadata) is sent to both the statistics and the data mining microservices.
+\defaultFigure[1.15]{sequenceDiagrams/CreateViolation.png}{sequence diagram of the creation of a violation}
