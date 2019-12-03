@@ -1,0 +1,45 @@
+Here we describe how integration strategies are supposed to be performed. Specifically, we explain how different components are integrated in our system and which strategy we adopt in order to integrate all the components efficiently.
+\\The following list represent every component grouped into several subsystems into which it will be integrated:
+\\[0.5cm]
+\textbf{Core Data Storing}
+\begin{itemize}
+\item IBM Relational Databases for PostgreSQL
+\item IBM Cloud Object Storage
+\end{itemize}
+
+\textbf{Account Management}
+\begin{itemize}
+	\item IBM App ID for Authentication
+	\item IBM App ID for Account Management
+\end{itemize}
+
+\textbf{Violation \& Ticket Management}
+\begin{itemize}
+  \item Violations Manager
+  \item Tickets Manager
+\end{itemize}
+
+\textbf{Basic Server}
+\begin{itemize}
+	\item Kubernates
+    \item Apache2 custom microservice
+\end{itemize}
+
+\textbf{Data Handling}
+\begin{itemize}
+	\item Statistics custom microservice
+	\item IBM Watson Visual Recognition
+\end{itemize}
+
+\textbf{Suggestion Management}
+\begin{itemize}
+	\item Suggestion custom microservice
+	\item IBM Watson Discovery
+	\item IBM Cloudant
+\end{itemize}
+
+\textbf{Interfaces}
+\begin{itemize}
+	\item Web Application GUI
+	\item Mobile Application GUI (Android and iOS)
+\end{itemize}

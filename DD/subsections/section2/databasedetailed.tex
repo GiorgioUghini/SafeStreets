@@ -2,7 +2,6 @@ Having provided a detailed description of the types of DBMS services we will use
 \begin{itemize}
 	\item \textbf{Violations Database - \href{https://cloud.ibm.com/catalog/services/databases-for-postgresql}{Relational PostgreSQL Cloud Database}}: The Violations Database is the most important Database of the whole SafeStreets architecture. Inside it, it will be found all the reported infraction along with a link to the Object Storage where the pictures of each violation are. For this reason, there will be two read replicas of the PostgreSQL Violations DB to offload traffic from our leader database. 
 	\\As IBM Cloud Databases allows to scale disk and RAM to best fit the application requirements, it is not needed to state how much memory and disk space the database must have, it just needs to be deployed. After the deployment, all the microservice that needs to access data inside this database, will be given a connection string that allows read or read/write access depending on which service is.
-	%TODO: Add schema model
 	\begin{comment}
 	\begin{figure}[h!]
 		\makebox[\textwidth]{\includegraphics[width=0.7\textwidth]{/images/microservices/postgres.png}}
@@ -71,6 +70,8 @@ Having provided a detailed description of the types of DBMS services we will use
 	\end{figure}
 	\FloatBarrier
 	\end{comment}
+	
+	%TODO: Add hash DB
 	
 	
 \end{itemize}

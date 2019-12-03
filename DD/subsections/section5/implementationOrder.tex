@@ -1,14 +1,10 @@
-The first step into the implementation will be trying to understand if the chosen technologies are the one that actually are the best fit to create the SafeStreets software.
-\\To do so a naive communication protocol between the Application Server and the Application Client needs to be put in place, and secondly an interface with the database needs to be done, from where should be possible to store and retrieve information.
-\\The software needs to be developed one small functionality at a time, with functionalities as atomic as possible. The server side main components should be built as a priority in order to have a more efficient way of testing the application.
-\\After the essential feature work it will be possible to start to develop the User Interface parts of SafeStreets.
-Some functionalities need to be provided before other if some relies on them so an order of development should be put in place: 
+Here we explain how a possible good order of implementation of sub-components might help us to fulfill and build the application. Its achievement implies the following steps:
 \begin{itemize}
-\item Sign up/Login manager beans
-\item Report Violation manager bean
-\item Automatic Report Violation manager bean
-\item Data-Mining manager bean
-\item Suggest for Interventions manager bean
-\item Statistics manager bean
+	\item The very first thing to be implemented is the SafeStreets link with the municipality, implemented in form of encrypted HTTP APIs. The correct and secure definition of this link is something that the entire SafeStreets architecture relies on.
+	\item At the second stage, we plan to create and configure all the server components/microservices (since they are those which will be queried by the client application afterwards).
+	\\Every microservice component, will be implemented following the goals and functionalities described in this documents and in the SafeStreets RASD. The order of the implementation of each microservice is not relevant, but only the development of one microservice at a time will be allowed.
+	Basically, our implementation order ranges from creating a user pool (IBM App ID) for data synchronization and authentication to setting up the cloud storage (IBM Cloud Object Storage and IBM Cloudant) for archiving data. 
+	\item Then, when all microservice are implemented, we will focus on the creation of the client application such as the mobile app and the dashboard for the municipality.
 \end{itemize}
 
+As said, in our architecture, every microservice needs to be developed one small functionality at a time, and should be as atomic as possible. Once a microservice is ready, it will be tested on its own, in order to have a more efficient way of testing the application.
