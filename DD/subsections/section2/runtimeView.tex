@@ -11,3 +11,19 @@ When a user submits a violation, the request is split into 2 parts: first, the p
 
 The pictures are sent to the computer vision service to retrieve metadata, identifying objects in the picture. In parallel, the data regarding the violation (vData) is stored inside the violations database. Once the metadata have been retrieved, the couple (vData, metadata) is sent to both the statistics and the data mining microservices.
 \defaultFigure[1.15]{sequenceDiagrams/CreateViolation.png}{sequence diagram of the creation of a violation}
+
+The following diagram provides more details on how a violation is stored in the violation microservice: The images are sent directly to the cloud object storage which returns the URLs to the client which are sent along with the request. In the violations database only the URLs and the unprocessed data are stored.
+\defaultFigure{sequenceDiagrams/ViolationMicroservice.png}{sequence diagram detail of the violations microservice}
+
+\subsubsection{Automatic Ticket}
+An automatic tickets works like a violation, but 2 more controls are put in place:
+\begin{itemize}
+    \item First, data about the ticket (pictures included) are sent to the Tickets Hashing System which calculates an hash and stores it into its database (which does not allow updates). When the police is sent to the police system for the automatic ticket, it must calculate the hash on the same data and check it against the one stored in the hashing system. Only if the hashes are equal the ticket is accepted.
+    \item Also, the ticket information is sent to the Tickets Check service which uses the data mining service to do an automatic check of the ticket to control whether it is a legit ticket. If the system does not find anything suspicious the ticket is automatically accepted, otherwise it must be controlled by an officer
+\end{itemize}
+
+\defaultFigure[1.15]{sequenceDiagrams/AutomaticTicket.png}{sequence diagram of a succesful ticket}
+
+More details on how the tickets hashing microservice works are in the following diagram:
+
+\defaultFigure{sequenceDiagrams/TicketHashingSystem.png}{sequence diagram of the tickets hashing system}

@@ -16,24 +16,72 @@ return ok
 
 @startuml CreateViolation
     participant User as U
-    participant "CloudObject\nStorage" as COS
     participant Violations as V
-    participant ViolationsDatabase as VD
     participant Statistics as S
     participant DataMining as DM
     participant ComputerVision as CV
     autoactivate on
 
-    U -> COS: storePictures(pics)
-    return URLs
     U -> V: createViolation(vData)
     V -> CV: sendImages(URLs)
-    V -> VD: storeViolation(vData)
-    return ok
     return metadata
     V -> DM: sendViolation(vData, metadata)
     V -> S: sendViolation(vData, metadata)
     return ok
+    return ok
+    return ok
+@enduml
+
+@startuml ViolationMicroservice
+    participant User as U
+    participant "CloudObject\nStorage" as COS
+    participant Violation as V
+    participant ViolationsDatabase as VD
+    autoactivate on
+    U -> COS: storePictures(pics)
+    return URLs
+    U -> V: createViolation(vData, urls)
+    V -> VD: storeViolation(vData, urls)
+    return ok
+    return ok
+@enduml
+
+@startuml AutomaticTicket
+    participant User as U
+    participant Violation as V
+    participant "Tickets Hashing\nSystem" as H
+    participant TicketsCheck as TC
+    participant DataMining as DM
+    participant PoliceSystem as PS
+
+    autoactivate on
+    U -> V: sendAutomaticTicket(data)
+    V -> H: sendTicket(data)
+    return ok
+    V -> TC: sendTicket(data)
+    TC -> DM: checkTicket(data)
+    return ok
+    return ok
+    V -> PS: sendTicket(data)
+    PS -> H: checkHash(ticektHash)
+    return ok
+    return ok
+    return ok
+@enduml
+
+@startuml TicketHashingSystem
+    participant Violation as V
+    participant TicketsHashingSystem as H
+    participant ReadOnlyDatabase as DB
+    participant PoliceSystem as PS
+    autoactivate on
+
+    V -> H: sendTicket(data)
+    H -> DB: insert(hash)
+    return ok
+    return ok
+    PS -> H: checkHash(hash)
+    H -> DB: get(hash)
     return ok
     return ok
 @enduml
