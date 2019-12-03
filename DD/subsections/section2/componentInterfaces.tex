@@ -1,23 +1,44 @@
 This sections includes further details on the interfaces between the custom internal components of the system and the IBM micro-services illustrated before. The communications among components should take place only through APIs, some of them need to be custom developed and others are already exposed by the services described in \ref{microservices}.
-\\ The customs APIs needed for the application well being are briefly described in the following list:
+\\ A list of APIs needed for the application's well being are briefly described in the following list, grouped by functionality that interacts through them:
+
+\textbf{User Data Management:}
 \begin{itemize}
-	\item \textbf{[POST] Send a violation:} Used from the client application when a user wants to send a new ticket violation.
-	\item \textbf{[GET] Retrieve a specific violation:} Used from the officers portal to get the information of a specific violation.
-	\item \textbf{[GET] Retrieve all the violations of a user:} Used from the client application to get all the user's violations.
-	\item \textbf{[GET] Retrieve all the violations pending:} Used from the officers portal to get all the violation that are yet to be processed.
-	\item \textbf{[POST] Change the status of a violation:} Used from the officers portal to change the status of a violation just analyzed from PENDING to ACCEPTED/DENIED.
-	\item \textbf{[GET] Get the hash of a specific violation:}  Used from both the client application and the officers portal to check the integrity of a specific violation (chain of trust). 
-	\item \textbf{[GET] Get the information of a specific area:} Used from both the client application and the officers portal to retrieve the information of an area that may be unsafe (both) or not (only officers).
-	\item \textbf{[GET] Get the information of the worst drivers:} Used from both the client application and the officers portal to retrieve the information about the worst drivers in the SafeStreets database. The officers should be able to acknowledge more information of the drivers than the users.
-	\item \textbf{[GET] Retrieve a specific statistic:} Used from both the client application and the officers portal to get the information of a specific thing given some proper bounds.
-	\item \textbf{[GET] Retrieve a general overview of the statistics:} Used from the client application so that the user could have a more general idea when he accesses the statistic section.
-	\item \textbf{[GET] Retrieve the suggestions of a specific area:} Used from the officers portal to get the possible suggestions elaborated with the data mining.
-	\item \textbf{[POST] Change the password of a user:} Used from the client application to change the password of its user.
-	\item \textbf{[POST] Ban a user:} Used from the officers portal in order to ban a malicious user of the application.
+	\item \textbf{[POST] changePassword(userId,newPassoword):} Used from the client application to change the password of its user.
+	\item \textbf{[POST] banUser(userId):} Used from the officers portal in order to ban a malicious user of the application.
 \end{itemize}
-The external APIs needed for the application well begin (except the one that each micro-services already uses) are briefly described in the following list:
+
+\textbf{Violations:}
 \begin{itemize}
-	\item \textbf{GPS:} When a violation is being performed by a SafeStreets customer the field for the violation address should be autofilled by the application when possible. To do so some glocalization APIs like the ones that Google Maps provides are needed.
-	\item \textbf{OCR:} When a violation is being performed by a SafeStreets customer the field for the license plate needs to be autofilled by the application. To do so an API exposed by Watson that given a set of images returns some text that can be compliant with a license plate needs to be used. The API should also accept a set of wrong license plate in case the precedent output of the API call was wrong and the user realised that the license plate given didn't correspond to the actual license plate of the vehicle committing the violation.
-	\item \textbf{Communication:} Every micro-service should exposes a set of API that guarantee the communication among components since every micro-service is neither unaware of others or independent.
+	\item \textbf{[POST] sendViolation(violation):} Used from the client application when a user wants to send a new ticket violation.
+	\item \textbf{[GET] getViolationById(violationId):} Used from the officers portal to get the information of a specific violation.
+	\item \textbf{[GET] getViolationsByUser(userId):} Used from the client application to get all the user's violations.
+	\item \textbf{[GET]	getViolationsPending():} Used from the officers portal to get all the violation that are yet to be processed.
+	\item \textbf{[POST] changeViolationState(violationId,newState):} Used from the officers portal to change the status of a violation just analyzed from PENDING to ACCEPTED/DENIED.
+	\item \textbf{[GET] getPositionWithGPS(x-coordinates,y-coordinates):} Used from the client application to get the user's position given their GPS position.
 \end{itemize}
+
+\textbf{Data Mining:}
+\begin{itemize}
+	\item \textbf{[GET] getLicensePlate(images,oldLicensePlates):} Used from the client application to get a license plate from the images provided if found. The API should also accept a set of wrong license plate in case the precedent output of the API call was wrong and the user realized that the license plate given didn't correspond to the actual license plate of the vehicle committing the violation.
+\end{itemize}
+
+\textbf{Request for interventions:}
+\begin{itemize}
+	\item \textbf{[GET] getSuggestions(area):} Used from the officers portal to get the possible suggestions elaborated with the data mining.
+\end{itemize}
+
+\textbf{Automatic Tickets:}
+\begin{itemize}
+	\item \textbf{[POST] sendViolationHash(violationHash):}  Used from the client application to ensure the integrity of a specific violation (chain of trust). 
+	\item \textbf{[GET] getViolationHash(violation):}  Used from the officers portal to check the integrity of a specific violation (chain of trust). 
+\end{itemize}
+
+\textbf{Statistics:}
+\begin{itemize}
+	\item \textbf{[GET] getAreaInformation(area):} Used from both the client application and the officers portal to retrieve the information of an area that may be unsafe (both) or not (only officers).
+	\item \textbf{[GET] getWorstDriversInformation():} Used from both the client application and the officers portal to retrieve the information about the worst drivers in the SafeStreets database. The officers should be able to acknowledge more information of the drivers than the users.
+	\item \textbf{[GET] getData(bounds):} Used from both the client application and the officers portal to get the information of a specific thing given some proper bounds.
+	\item \textbf{[GET] getStatisticsOverview:} Used from the client application so that the user could have a more general idea when he accesses the statistic section.
+\end{itemize}
+
+Of course, the mentioned above APIs are not to be intended as strict and not-modifiable, but there can be added, removed or edited APIs to/from the list during the implementation of the application if there is the need to use a different approach.
