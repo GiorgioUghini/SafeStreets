@@ -85,3 +85,34 @@ return ok
     return ok
     return ok
 @enduml
+
+@startuml OfficerTicketCheck
+    participant User as U
+    participant Officer as O
+    participant Violation as V
+    participant "Tickets Hashing\nSystem" as H
+    participant TicketsCheck as TC
+    participant DataMining as DM
+    participant PoliceSystem as PS
+
+    autoactivate on
+    U -> V: sendAutomaticTicket(data)
+    V -> H: sendTicket(data)
+    return ok
+    V -> TC: sendTicket(data)
+    TC -> DM: checkTicket(data)
+    return KO
+    return KO
+    V -> V: markAsToCheck(ticket)
+    deactivate V
+    return ok
+    O -> V: getPendingTickets()
+    return tickets
+    O -> V: approve(ticket)
+    V -> PS: sendTicket(ticket)
+    PS -> TC: check(hash)
+    return ok
+    return ok
+    return ok
+    
+@enduml

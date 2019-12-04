@@ -16,14 +16,19 @@ The following diagram provides more details on how a violation is stored in the 
 \defaultFigure{sequenceDiagrams/ViolationMicroservice.png}{sequence diagram detail of the violations microservice}
 
 \subsubsection{Automatic Ticket}
-An automatic tickets works like a violation, but 2 more controls are put in place:
+An automatic ticket works like a violation, but 2 more controls are put in place:
 \begin{itemize}
     \item First, data about the ticket (pictures included) are sent to the Tickets Hashing System which calculates an hash and stores it into its database (which does not allow updates). When the police is sent to the police system for the automatic ticket, it must calculate the hash on the same data and check it against the one stored in the hashing system. Only if the hashes are equal the ticket is accepted.
     \item Also, the ticket information is sent to the Tickets Check service which uses the data mining service to do an automatic check of the ticket to control whether it is a legit ticket. If the system does not find anything suspicious the ticket is automatically accepted, otherwise it must be controlled by an officer
 \end{itemize}
+All the other calls from the violation service, as they are in figure 14, are executed after the Tickets Hashing System confirms that the ticket has been succesfully stored.
 
 \defaultFigure[1.15]{sequenceDiagrams/AutomaticTicket.png}{sequence diagram of a succesful ticket}
 
 More details on how the tickets hashing microservice works are in the following diagram:
 
 \defaultFigure{sequenceDiagrams/TicketHashingSystem.png}{sequence diagram of the tickets hashing system}
+
+If the TicketsCheck service is sure enough that the ticket is invalid, the ticket must be first checked by an officer
+
+\defaultFigure{sequenceDiagrams/OfficerTicketCheck.png}{sequence diagram of a ticket that is initially rejected by the Data Mining}
