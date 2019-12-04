@@ -114,5 +114,29 @@ return ok
     return ok
     return ok
     return ok
-    
+@enduml
+
+@startuml Suggestions
+    participant Officer as O
+    participant Suggestions as S
+    participant "Suggestions\nDatabase" as DB
+    participant DataMining as DM
+    autoactivate on
+
+    == Every day at midnight ==
+    S -> DM: querySuggestions()
+    return suggestions
+    S -> DB: store(suggestions)
+    return ok
+    == ==
+    O -> S: getSuggestions()
+    S -> DB: getSuggestions()
+    return newSuggestions
+    return newSuggestions
+    loop for all handled suggestions
+        O -> S: delete(suggestion)
+        S -> DB: delete(suggestion)
+        return ok
+        return ok
+    end
 @enduml

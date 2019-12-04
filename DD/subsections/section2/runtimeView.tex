@@ -32,3 +32,9 @@ More details on how the tickets hashing microservice works are in the following 
 If the TicketsCheck service is sure enough that the ticket is invalid, the ticket must be first checked by an officer
 
 \defaultFigure{sequenceDiagrams/OfficerTicketCheck.png}{sequence diagram of a ticket that is initially rejected by the Data Mining}
+
+\subsubsection{Suggestion System}
+Once a day, when the load on the system is low (each night at midnight), the suggestions service queries the data mining service to retrieve new suggestions that stores inside its database.
+
+The officer can then query for new suggestions. The service queries its own database in which it had previously stored the suggestions and returns them to the officer, that can handle and delete them one by one.
+\defaultFigure[0.85]{sequenceDiagrams/Suggestions.png}{sequence diagram of the suggestions system}
