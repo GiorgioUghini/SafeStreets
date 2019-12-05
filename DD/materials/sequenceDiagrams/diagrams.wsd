@@ -140,3 +140,23 @@ return ok
         return ok
     end
 @enduml
+
+@startuml Statistics
+    participant User as U
+    participant Statistics as S
+    participant "Statistics\nDatabase" as DB
+    autoactivate on
+
+    == Every day at midnight ==
+    S -> DB: getViolationsOfTheDay()
+    return violations
+    S -> S: buildStatistics(violations)
+    S -> DB: storeUpdatedStatistics(stats)
+    return ok
+    deactivate S
+    == ==
+    U -> S: getWorstDriversInformation()
+    S -> DB: query(worstDriverInfo)
+    return data
+    return data
+@enduml

@@ -38,3 +38,11 @@ Once a day, when the load on the system is low (each night at midnight), the sug
 
 The officer can then query for new suggestions. The service queries its own database in which it had previously stored the suggestions and returns them to the officer, that can handle and delete them one by one.
 \defaultFigure[0.85]{sequenceDiagrams/Suggestions.png}{sequence diagram of the suggestions system}
+
+\subsubsection{Statistics}
+Statistics are updated every night at midnight using the violations of the day. The application gets them from the db, computes the new statistics and stores them on server.
+
+When a user queries for statistics, these are already built and can be returned directly with an easier and faster query.
+
+In the following picture a particular query is executed but the process is the same for all the possibile statistics.
+\defaultFigure[0.9]{sequenceDiagrams/Statistics.png}{sequence diagram of the statistics microservice}
