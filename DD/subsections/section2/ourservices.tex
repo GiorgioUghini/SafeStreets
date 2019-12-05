@@ -1,0 +1,20 @@
+All of our custom microservices will be stored in the Cloud offered by IBM and every external service is picked from the IBM Cloud Platform.
+\begin{itemize}
+	\item \textbf{Webserver}: The webserver is containerized in a Docker Apache container and orchestrated by the \hyperlink{kubernetes}{Kubernetes service} by IBM.
+	This composition allows to scale the server horizontally just by adding or removing containers based on the load on the server.
+	
+	\item \hyperlink{cloudObjectStorage}{\textbf{Cloud Object Storage}}: All the SafeStreets' images will be stored on this component and will be accessible by a public URL. In addiorion, it allows us to receive metadata from the Computer Vision service that will be stored along with the image they belong to.
+	
+	\item \textbf{Violations and Tickets}: Receives violations from users and gives access to violations to officers and other microservices. This is our core service that consists in a proprietary web application exposing a REST API and connected to a managed \hyperlink{postgres}{PostgreSQL database}.
+	
+	\item \textbf{Tickets Hashing system}: Stores the hashes of the violations with automatic ticket option enabled on a database that allows only inserts and reads.
+	It provides an API for the \textit{Violations and tickets} service to POST a ticket, of which it will calculate the hash, and for the police to send and hash for a ticket that will be compared with the one stored in its database.
+	
+	\item \textbf{Statistics}: This is a simple Python service that every day, when the load on the system is low, contacts the \textit{Violations and tickets} service to grab the violations for that day and builds new statistics that stores inside its \hyperlink{cloudant}{Cloudant database}.
+	It also provides an API for users and officers to query such statistics.
+	
+	\item \textbf{Suggestion mining}: It uses the power of the IBM services related to \hyperlink{watson}{computer vision} and \hyperlink{discovery}{data mining} to identify unsafe areas and to provide suggestions on how to fix them. It consists of a Python application that queries and handle data from such services and provides an API for the local police to retrieve the suggestions found, which are stored in a NoSQL database.
+	
+	\item \textbf{Other services}
+	The \hyperlink{watson}{computer vision}, \hyperlink{discovery}{data mining} and \hyperlink{appid}{User management} services are well described in other sections and do not have any components relevant here since they are pay-per-use services.
+\end{itemize}
