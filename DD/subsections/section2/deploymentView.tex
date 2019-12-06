@@ -1,1 +1,13 @@
+The following diagram explains how the application is deployed. Since most of the physical details are hidden behind the IBM services the diagram is custom but still quite straightforward.
+
+Users connect through a smartphone application, while officers use a website that runs in all major browsers. Both the devices can expolit a cache system allowing them to save bandwidth.
+
+The IBM cloud provides a firewall and DDoS protection system, it is included by default when using IBM services and does not need to be managed.
+
+The web server shows 2 instances of the docker container in the graph, which is the starting point for the application. However, it is almost immediate to add new instances and IBM offers an automatic load balancer service for Kubernetes that works out of the box.
+
+All the services inside the \textit{services} box are able to talk to each other without exposing an URL to the network outside of IBM exploiting IBM connection mechanisms. In particular, those inside the green box \textit{private connection} have a reserved connection that can hide them even from other IBM services. This schema is used to isolate databases, while the Python applications are exposed to other microservices and to the external world by means of an API.
+
+The \textit{App ID} service exposes an API to the outside world, while the \textit{Data Mining} and \textit{Computer Vision} services are only available inside the IBM network.
+
 \defaultFigure[1.2]{DeploymentView.png}{Detailed structure of the deployment}
