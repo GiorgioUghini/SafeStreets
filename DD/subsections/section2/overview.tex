@@ -3,12 +3,12 @@ This section of the document gives a detailed view of the physical and logical i
 The logical division of the application consists of 3 layers: presentation, application and data.
 Every layer, then, is made of several microservices.
 \begin{enumerate}
-	\item Subsection \ref{presentationlayer} \textbf{Presentation layer}: The Presentation Layer is the space where interactions between humans and machines occur. The goal of this interaction is to allow effective operation and control of the machine from the human end, whilst the machine simultaneously feeds back information to the server.
+	\item Subsection \ref{presentationlayer} \textbf{Presentation layer}: The Presentation Layer is the space where interactions between humans and machines occur. The goal of this interaction is to allow effective operation and control of the machine from the human end, whilst the machine simultaneously feeds information back to the server.
 	\item Subsection \ref{applicationlayer} \textbf{Application layer}: The Application Layer is the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed.
-	\item Subsection \ref{datalayer} \textbf{Data layer}: The Data Layer is physically where the data are stored. On this layer happen all the retrieve and update operations on the data. 
+	\item Subsection \ref{datalayer} \textbf{Data layer}: The Data Layer is where the data is physically stored. In this layer happen all the retrieve and update operations on the data.
 \end{enumerate}
 
-Then, in the following sections, a top down approach will be adopted for the description of the architectural design of the system:
+Then, in the following sections, a top down approach will be adopted to describe the architectural design of the system:
 \begin{description}
 	\item[\ref{higharch}] \textbf{High-Level components}: A description of high-level components and their interactions.
 	\item[\ref{componentview}] \textbf{Component View}: A detailed insight of the components described in the previous section.
