@@ -9,7 +9,10 @@ Having provided a detailed description of the types of DBMS services we will use
 	\end{figure}
 	\FloatBarrier
 	\end{comment}
-	
+	\item \textbf{Statistics Database - \href{https://cloud.ibm.com/catalog/services/databases-for-postgresql}{Relational PostgreSQL Cloud Database}}: The Statistics Database where all the application usage statistics are. 
+	These are not so important data so for what concerns the replication, it will not physically duplicated by us, but we rely on the internal data replication of IBM.
+	\\As already stated, IBM Cloud Databases allows to scale disk and RAM to best fit the application requirements, but in this case is defined a maximum number of resources to be allocated because the statistics page is not a SafeStreets core functionality.
+	After the deployment, everyone can query this database trough an apposite microservice, but the write access is restricted only to enabled services inside the IBM Cloud VPN.
 	\item \textbf{Suggestion Database - \href{https://cloud.ibm.com/catalog/services/cloudant}{IBM Cloudant}}: This database represents the core heart of the memory that stores all the data that comes from the AI and Data Mining algorithms.
 	\\Our system will be configured such as when it detects that is in a low-traffic moment, if it's in a time shift to be configured (late night) then it will start to mine the data of the past day to find possible suggestion to unsafe areas. When it finishes, the newly created suggestion will be stored in this database.
 	\\As every suggestion comes from an Artificial Intelligence agents, it would be substantially different in structure from each other, and so it needs to be stored in a NoSQL database such as Cloudant. Figure \ref{fig:jsondoc} shows some possible documents that can be stored inside this database.
@@ -58,10 +61,7 @@ Having provided a detailed description of the types of DBMS services we will use
 	\end{figure}
 	\FloatBarrier
 	
-	\item \textbf{Statistics Database - \href{https://cloud.ibm.com/catalog/services/databases-for-postgresql}{Relational PostgreSQL Cloud Database}}: The Statistics Database where all the application usage statistics are. 
-	These are not so important data so for what concerns the replication, it will not physically duplicated by us, but we rely on the internal data replication of IBM.
-	\\As already stated, IBM Cloud Databases allows to scale disk and RAM to best fit the application requirements, but in this case is defined a maximum number of resources to be allocated because the statistics page is not a SafeStreets core functionality.
-	After the deployment, everyone can query this database trough an apposite microservice, but the write access is restricted only to enabled services inside the IBM Cloud VPN.
+	
 	%TODO: Add schema model
 	\begin{comment}
 	\begin{figure}[h!]
