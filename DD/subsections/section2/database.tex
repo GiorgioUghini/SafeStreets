@@ -2,7 +2,7 @@ Each microservice will have its own data storage system but not all of them will
 However, to make SafeStreets data's persistent, these database will be deployed:
 \begin{itemize}
 	\item \textbf{Violations DB}: This database will store all the data regarding a single violation except for images. As the data inside it are well structured this database will be a relational database.
-	\item \textbf{Statistics DB}: As opposed to the above database, the Statistics DB will be deployed to store all internal and external data regarding the usage of SafeStreets. Indeed, the mechanism chosen for such DB is the data warehouse container.
+	\item \textbf{Statistics DB}: As the above database, the Statistics DB will be deployed to store all the data regarding the usage of SafeStreets. This data are well structured over time. Indeed, the mechanism chosen for such DB is the relational database container.
 	\item \textbf{Suggestion DB}: Every time the Data Mine microservice runs, it will produce possible intervention to some areas considered dangerous. Such advises that comes from the Data Mining algorithm will be stored in a highly unstructured database, formerly in a NoSQL document-oriented database.
 	\item \textbf{Hash DB}: This database allows SafeStreets to ensure that the chain of custody is never broken. Indeed, when someone reports a violation and opt in for the automatic ticket, a hash of the entire violation object along with its media elements, is stored here. This database should be configured once as read-only as this is the key-aspect of its usage.
 \end{itemize}
