@@ -1,36 +1,34 @@
 @startuml creation_of_new_report
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_report_violation\n_page()
     return
     U -> S: 2.send_report(report)
-    S -> ST: 2.1.check_user_credentials()
-    return user data
+    S -> S: 2.1.check_user_credentials()
+    deactivate S
     S -> S: 2.2.report_is_valid(report)
     deactivate S
-    S -> ST: 2.3store_report(report)
-    return ok
+    S -> S: 2.3store_report(report)
+    deactivate S
     return ok, redirect\nto main page
 @enduml
 
 @startuml information_mining
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_statistics_page()
-    S -> ST: 1.1.check_user_type()
-    return user
+    S -> S: 1.1.check_user_type()
+    deactivate S
     return filters
     U -> S: 2.send_filters(filters)
-    S -> ST: 2.1.query(filters)
-    return search results
+    S -> S: 2.1.query(filters)
+    deactivate S
     S -> S: 2.2.process_results()
     deactivate S
     return unsafe areas
@@ -41,17 +39,16 @@
 @startuml information_mining_by_officers
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_statistics_page()
-    S -> ST: 1.1.check_user_type()
-    return authority
+    S -> S: 1.1.check_user_type()
+    deactivate S
     return filters
     U -> S: 2.send_filters(filters)
-    S -> ST: 2.1.query(filters)
-    return search results
+    S -> S: 2.1.query(filters)
+    deactivate S
     S -> S: 2.2.process_results()
     deactivate S
     return unsafe areas
@@ -91,17 +88,16 @@
 @startuml information_mining_vehicle
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_statistics_page()
-    S -> ST: 1.1check_user_type()
-    return user
+    S -> S: 1.1check_user_type()
+    deactivate S
     return filters
     U -> S: 2.send_filters(filters)
-    S -> ST: 2.1.query(filters)
-    return search results
+    S -> S: 2.1.query(filters)
+    deactivate S
     S -> S: 2.2.process_results()
     deactivate S
     return vehicles statistics
@@ -112,17 +108,16 @@
 @startuml mining_vehicle_officers
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_statistics_page()
-    S -> ST: 1.1.check_user_type()
+    S -> S: 1.1.check_user_type()
     return authority
     return filters
     U -> S: 2.send_filters(filters)
-    S -> ST: 2.1.query(filters)
-    return search results
+    S -> S: 2.1.query(filters)
+    deactivate S
     S -> S: 2.2.process_results()
     deactivate S
     return vehicle statistics

@@ -1,11 +1,10 @@
 \newcommand{\usecasefigure}[3][1.0]{
-	\begin{figure}[htp]
-		\centering
-		\includegraphics[width=#1\textwidth]{images/useCases/#2.png}
+	\begin{figure}[h!]
+		\makebox[\textwidth]{\includegraphics[width=#1\textwidth]{images/useCases/#2.png}}
 		\caption{Use case diagram #3}
 		\label{fig:use_cases_#2}
 	\end{figure}
-	\newpage
+	\FloatBarrier
 }
 
 This section contains all the use cases initially described with the use case UML models, then the most important Use Cases have their own table which provides further details such as: involved actors, entry conditions, flow of events,  exit conditions and exceptional conditions.
@@ -24,13 +23,13 @@ This section contains all the use cases initially described with the use case UM
 		\input{usecases/tables/signup}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{sign_up}{of the signup process}
+		\usecasefigure[0.8]{sign_up}{of the signup process}
 		\newpage
 	\item \textbf{Login}\\
 		\input{usecases/tables/login}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{login}{of the login process}
+		\usecasefigure[0.8]{login}{of the login process}
 		\newpage
 	\item \textbf{Password Recovery}\\
 		\input{usecases/tables/recoverpassword}
@@ -56,11 +55,11 @@ This section contains all the use cases initially described with the use case UM
 		\input{usecases/tables/reportcreation}
 		\newpage
 		\textbf{Diagrams}
-		\usecasefigure{creation_of_new_report}{of the report creation process}
+		\usecasefigure[0.9]{creation_of_new_report}{of the report creation process}
 		\newpage
 	\item \textbf{Automatic Traffic Ticket generation}\\
 		\input{usecases/tables/automaticticket}
-		\usecasefigure{automatic_traffic_ticket}{of the traffic ticket generation process}
+		\usecasefigure[1.1]{automatic_traffic_ticket}{of the traffic ticket generation process}
 		\newpage
 	\item \textbf{Information Mining by Users (Unsafe Area)}\\
 		\input{usecases/tables/informationMining}
@@ -105,7 +104,7 @@ This section contains all the use cases initially described with the use case UM
 	\input{usecases/tables/statisticsConsulting}
 	\newpage
 	\textbf{Diagrams}
-	\usecasefigure[0.95]{general_statistics}{for an actor examining statistics}
+	\usecasefigure[0.85]{general_statistics}{for an actor examining statistics}
 	\newpage
 \end{enumerate}
 \newpage

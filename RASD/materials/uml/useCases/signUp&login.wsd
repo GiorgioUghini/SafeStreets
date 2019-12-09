@@ -2,8 +2,7 @@
     autoactivate on
 
     participant User as U
-    participant System as S
-    participant Storage as ST
+    participant SafeStreet as S
 
     activate U
     U -> S: 1.get_signup_page()
@@ -11,8 +10,8 @@
     U -> S: 2.send_user_data(data)
     S -> S: 2.1.check_validity(data)
     deactivate S
-    S -> ST: 2.2.store_data(data)
-    return ok
+    S -> S: 2.2.register_user(data)
+    deactivate S
     return ok, redirect to\nprofile page
     deactivate U
 @enduml
@@ -21,15 +20,14 @@
     autoactivate on
 
     participant User as U
-    participant System as S
-    participant Storage as ST
+    participant SafeStreet as S
 
     activate U
     U -> S: 1.get_login_page()
     return login page
     U -> S: 2.send_login\n_information(data)
-    S -> ST: 2.1.check_login_info(data)
-    return user data
+    S -> S: 2.1.check_login_info(data)
+    deactivate S
     return ok, redirect\nto homepage
     deactivate U
 @enduml
@@ -39,7 +37,6 @@
 
     participant User as U
     participant System as S
-    participant Storage as ST
     participant Mailer as M
 
     activate U
@@ -49,16 +46,16 @@
     return password recovery page
     U -> S: 3.recover_passw(email)
     deactivate U
-    S -> ST: 3.1.check_user_exists(email)
-    return user data
+    S -> S: 3.1.check_user_exists(email)
+    deactivate S
     S -> M: 3.2.send_recovery_email(email)
     deactivate S
     M ->> U: email with link to recover password
     deactivate M
     activate U
     U -> S: 4.set_new_passwd(password)
-    S -> ST: 4.1.update_password\n(email, password)
-    return ok
+    S -> S: 4.1.update_password\n(email, password)
+    deactivate S
     return ok, redirect to login page
     deactivate U
 

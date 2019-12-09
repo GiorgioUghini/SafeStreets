@@ -1,15 +1,14 @@
 @startuml general_statistics
     participant User as U
     participant System as S
-    participant Storage as ST
 
     autoactivate on
 
     U -> S: 1.get_statistics_page()
     return filters
     U -> S: 2.send_filters(filters)
-    S -> ST: 2.1.query(filters)
-    return search results
+    S -> S: 2.1.query(filters)
+    deactivate S
     S -> S: 2.2.process_results()
     deactivate S
     return general statistics
